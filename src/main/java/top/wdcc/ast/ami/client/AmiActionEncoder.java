@@ -1,6 +1,6 @@
-package com.m7.ast.ami.codec;
+package top.wdcc.ast.ami.client;
 
-import com.m7.ast.ami.transport.AmiAction;
+import top.wdcc.ast.ami.actions.AmiAction;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
@@ -17,9 +17,6 @@ public class AmiActionEncoder extends MessageToByteEncoder<AmiAction> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext, AmiAction action, ByteBuf byteBuf) throws Exception {
         StringBuilder sb = new StringBuilder();
-        sb.append("Action: ");
-        sb.append(action.getName());
-        sb.append("\n");
         Map<String, String> params = action.getParams();
         for (Map.Entry<String,String> entry : params.entrySet()) {
             sb.append(String.format("%s: %s\n", entry.getKey(), entry.getValue()));

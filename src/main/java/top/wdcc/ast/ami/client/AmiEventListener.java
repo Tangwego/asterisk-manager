@@ -1,6 +1,4 @@
-package com.m7.ast.ami.client;
-
-import com.m7.ast.ami.transport.AmiEvent;
+package top.wdcc.ast.ami.client;
 
 /**
  * Ami事件监听接口

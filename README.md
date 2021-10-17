@@ -1,6 +1,12 @@
-## 使用方法(Usage)
+## Usage
+## Common Usage:
 ```
-AmiClient amiClient = new AmiClient();
+AmiConfig amiConfig = new AmiConfig();
+amiConfig.setUsername("asterisk");
+amiConfig.setSecret("asterisk");
+amiConfig.setHost("192.168.0.120");
+amiConfig.setPort(5038);
+AmiClient amiClient = new AmiClient(amiConfig);
 amiClient.setEventListener(new AmiEventListener() {
     @Override
     public void onLogin(boolean success) {
@@ -12,10 +18,30 @@ amiClient.setEventListener(new AmiEventListener() {
         // TODO received event
     }
 });
-AmiConfig amiConfig = new AmiConfig();
-amiConfig.setUsername("dishui");
-amiConfig.setSecret("7moorcom");
-amiClient.connect("192.168.121.63", 6058, 30, amiConfig);
+
+amiClient.login();
+AmiAction action = new ListCommandAction();
+AmiMessage amiMessage = amiClient.sendAction(action);
+
+amiClient.close();
+```
+
+## Possible Usage:
+```
+AmiClient amiClient = new AmiClient("192.168.0.120", 5038);
+amiClient.setEventListener(new AmiEventListener() {
+    @Override
+    public void onLogin(boolean success) {
+        // TODO login
+    }
+
+    @Override
+    public void onEvent(AmiEvent event) {
+        // TODO received event
+    }
+});
+
+amiClient.login("asterisk", "asterisk");
 AmiAction action = new ListCommandAction();
 AmiMessage amiMessage = amiClient.sendAction(action);
 

@@ -1,11 +1,7 @@
-package com.m7.ast.ami.handler;
+package top.wdcc.ast.ami.client;
 
-import com.m7.ast.ami.actions.LoginAction;
-import com.m7.ast.ami.client.AmiConfig;
-import com.m7.ast.ami.client.AmiEventListener;
-import com.m7.ast.ami.transport.AmiAction;
-import com.m7.ast.ami.transport.AmiEvent;
-import com.m7.ast.ami.transport.AmiMessage;
+import top.wdcc.ast.ami.actions.LoginAction;
+import top.wdcc.ast.ami.actions.AmiAction;
 import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +33,11 @@ public class AmiClientHandler extends AbstractAmiHandler {
     protected void handleLogin(ChannelHandlerContext ctx, AmiMessage message) {
         AmiAction authAction = new LoginAction(config.getUsername(), config.getSecret());
         AmiMessage amiMessage = sendCommand(ctx.channel(), authAction);
+
+        if (amiMessage.isSuccess()) {
+
+        }
+
         if (this.listener != null) {
             this.listener.onLogin(amiMessage.isSuccess());
         }

@@ -1,4 +1,4 @@
-package com.m7.ast.ami.client;
+package top.wdcc.ast.ami.client;
 
 /**
  * Ami连接异常

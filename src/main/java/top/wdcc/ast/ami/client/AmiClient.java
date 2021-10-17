@@ -1,12 +1,7 @@
-package com.m7.ast.ami.client;
+package top.wdcc.ast.ami.client;
 
-import com.m7.ast.ami.actions.LogoffAction;
-import com.m7.ast.ami.codec.AmiActionEncoder;
-import com.m7.ast.ami.codec.AmiMessageDecoder;
-import com.m7.ast.ami.handler.AmiClientHandler;
-import com.m7.ast.ami.transport.AmiAction;
-import com.m7.ast.ami.transport.AmiEvent;
-import com.m7.ast.ami.transport.AmiMessage;
+import top.wdcc.ast.ami.actions.LogoffAction;
+import top.wdcc.ast.ami.actions.AmiAction;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -30,12 +25,25 @@ public class AmiClient implements AmiEventListener{
     private boolean isLogin;
     private AtomicBoolean authenticated = new AtomicBoolean(false);
     private AmiEventListener listener;
+    private AmiConfig config;
 
-    public AmiClient(){
-
+    public AmiClient(String host, int port) {
+        this.config = new AmiConfig();
+        this.config.setHost(host);
+        this.config.setPort(port);
     }
 
     public AmiClient(AmiConfig config){
+        if (config == null) {
+            throw new IllegalArgumentException("config cannot be null");
+        }
+        if (config.getHost() == null || config.getHost().isEmpty()) {
+            throw new IllegalArgumentException("host cannot be empty");
+        }
+        this.config = config;
+        if (config.getPort() <= 0 || config.getPort() >= 65535) {
+            this.config.setPort(5038);
+        }
 
     }
 
@@ -43,7 +51,17 @@ public class AmiClient implements AmiEventListener{
         this.listener = listener;
     }
 
-    public void connect(String host, int port, int timeout, AmiConfig config) throws InterruptedException {
+    public void login() throws InterruptedException {
+        login(this.config);
+    }
+
+    public void login(String username, String secret) throws InterruptedException {
+        this.config.setUsername(username);
+        this.config.setSecret(secret);
+        login(config);
+    }
+
+    private void login(AmiConfig config) throws InterruptedException {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group)
                 .channelFactory(NioSocketChannel::new)
@@ -57,11 +75,10 @@ public class AmiClient implements AmiEventListener{
                                 .addLast(new AmiClientHandler(config, AmiClient.this));
                     }
                 });
-        ChannelFuture future = bootstrap.connect(host, port).sync();
-        if (!future.awaitUninterruptibly(timeout, TimeUnit.SECONDS)) {
-            throw new AmiConnectException("Connect to %s:%d failed!", host, port);
+        ChannelFuture future = bootstrap.connect(config.getHost(), config.getPort()).sync();
+        if (!future.awaitUninterruptibly(config.getTimeout(), TimeUnit.SECONDS)) {
+            throw new AmiConnectException("Connect to %s:%d failed!", config.getHost(), config.getPort());
         } else {
-            // TODO 检查认证是否通过
             this.channel = future.channel();
             if (!future.isSuccess()) {
                 this.channel = null;

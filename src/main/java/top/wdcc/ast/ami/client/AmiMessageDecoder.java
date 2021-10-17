@@ -1,7 +1,5 @@
-package com.m7.ast.ami.codec;
+package top.wdcc.ast.ami.client;
 
-import com.m7.ast.ami.transport.AmiMessage;
-import com.m7.ast.ami.transport.AmiMessageImpl;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ReplayingDecoder;

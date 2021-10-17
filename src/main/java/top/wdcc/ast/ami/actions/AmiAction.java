@@ -1,4 +1,6 @@
-package com.m7.ast.ami.transport;
+package top.wdcc.ast.ami.actions;
+
+import top.wdcc.ast.utils.UuidUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,14 +14,29 @@ import java.util.Map;
 public abstract class AmiAction {
 
     // AMI action 请求
-    public static final String AMI_ACTION = "Action";
+    private static final String AMI_ACTION = "action";
 
-    private String name;
+    private static final String AMI_ACTIONID = "actionId";
+
+    private static final String AMI_EVENTS = "Events";
+
     private Map<String, String> params;
 
     public AmiAction(String name){
-        this.name = name;
+        this(name, UuidUtils.getUuid());
+    }
+
+    public AmiAction(String name, String actionId){
+        this(name, actionId, true);
+    }
+
+    public AmiAction(String name, String actionId, boolean hasEvent){
         params = new HashMap<>();
+        this.params.put(AMI_ACTION, name);
+        this.params.put(AMI_ACTIONID, actionId);
+        if (!hasEvent) {
+            this.params.put(AMI_EVENTS, "off");
+        }
     }
 
     public void addParams(String field, String value) {
@@ -31,7 +48,7 @@ public abstract class AmiAction {
     }
 
     public String getName() {
-        return name;
+        return params.get(AMI_ACTION);
     }
 
     public String getParam(String field){
@@ -49,7 +66,8 @@ public abstract class AmiAction {
     @Override
     public String toString() {
         return "AmiAction{" +
-                "name='" + name + '\'' +
+                "id='" + params.get(AMI_ACTIONID) + '\'' +
+                ", name='" + params.get(AMI_ACTION) + '\'' +
                 ", params=" + params +
                 '}';
     }

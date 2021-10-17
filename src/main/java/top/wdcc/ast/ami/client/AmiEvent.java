@@ -1,4 +1,4 @@
-package com.m7.ast.ami.transport;
+package top.wdcc.ast.ami.client;
 
 import java.util.Map;
 

@@ -1,6 +1,4 @@
-package com.m7.ast.ami.actions;
-
-import com.m7.ast.ami.transport.AmiAction;
+package top.wdcc.ast.ami.actions;
 
 /**
  * 展示所有命令
