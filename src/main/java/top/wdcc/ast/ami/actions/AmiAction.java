@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 抽象Action类
  *
- * @author TANG
+ * @author Wavin
  */
 public abstract class AmiAction {
 

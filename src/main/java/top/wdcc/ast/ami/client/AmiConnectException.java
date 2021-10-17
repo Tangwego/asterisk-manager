@@ -1,9 +1,9 @@
 package top.wdcc.ast.ami.client;
 
 /**
- * Ami连接异常
+ * Ami Connection Exception
  *
- * @author TANG
+ * @author Wavin
  */
 public class AmiConnectException extends RuntimeException{
 

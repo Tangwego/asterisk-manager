@@ -1,14 +1,14 @@
 package top.wdcc.ast.ami.client;
 
 /**
- * Ami配置类
+ * Ami Config
  *
- * @author TANG
+ * @author Wavin
  */
 public class AmiConfig {
     private String host;
     private int port;
-    private int timeout;
+    private long timeout;
     private String username;
     private String secret;
 
@@ -44,11 +44,11 @@ public class AmiConfig {
         this.port = port;
     }
 
-    public int getTimeout() {
+    public long getTimeout() {
         return timeout;
     }
 
-    public void setTimeout(int timeout) {
+    public void setTimeout(long timeout) {
         this.timeout = timeout;
     }
 

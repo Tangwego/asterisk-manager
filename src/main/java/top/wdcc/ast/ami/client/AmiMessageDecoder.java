@@ -8,9 +8,9 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 /**
- * Action解码器
+ * Ami Message Decoder
  *
- * @author TANG
+ * @author Wavin
  */
 public class AmiMessageDecoder extends ReplayingDecoder<AmiMessageDecoder.State> {
 

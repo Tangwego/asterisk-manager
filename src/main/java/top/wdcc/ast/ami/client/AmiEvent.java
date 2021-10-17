@@ -3,9 +3,9 @@ package top.wdcc.ast.ami.client;
 import java.util.Map;
 
 /**
- * Ami事件类
+ * Ami Event
  *
- * @author TANG
+ * @author Wavin
  */
 public class AmiEvent {
 

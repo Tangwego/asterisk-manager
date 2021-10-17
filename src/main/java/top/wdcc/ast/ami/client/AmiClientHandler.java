@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 客户端处理Channel收到数据
  *
- * @author TANG
+ * @author Wavin
  */
 public class AmiClientHandler extends AbstractAmiHandler {
     private static final Logger logger = LoggerFactory.getLogger(AmiClientHandler.class);
@@ -33,10 +33,6 @@ public class AmiClientHandler extends AbstractAmiHandler {
     protected void handleLogin(ChannelHandlerContext ctx, AmiMessage message) {
         AmiAction authAction = new LoginAction(config.getUsername(), config.getSecret());
         AmiMessage amiMessage = sendCommand(ctx.channel(), authAction);
-
-        if (amiMessage.isSuccess()) {
-
-        }
 
         if (this.listener != null) {
             this.listener.onLogin(amiMessage.isSuccess());

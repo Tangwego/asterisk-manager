@@ -6,9 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * AMI消息实体
+ * Ami Message Implement
  *
- * @author tang
+ * @author Wavin
  */
 public class AmiMessageImpl implements AmiMessage {
     private Type type;
@@ -18,14 +18,17 @@ public class AmiMessageImpl implements AmiMessage {
         params = new HashMap<>();
     }
 
+    @Override
     public Type getType() {
         return type;
     }
 
+    @Override
     public String getParam(String field){
         return params.get(field);
     }
 
+    @Override
     public Map<String, String> getParams() {
         return params;
     }
@@ -56,11 +59,20 @@ public class AmiMessageImpl implements AmiMessage {
         params.put(field, value);
     }
 
+//    @Override
+//    public String toString() {
+//        return "AmiMessage[" +
+//                "type=" + type +
+//                ", params=has [" + params.size() +
+//                "] fields]";
+//    }
+
+
     @Override
     public String toString() {
-        return "AmiMessage[" +
+        return "AmiMessageImpl{" +
                 "type=" + type +
-                ", params=has [" + params.size() +
-                "] fields]";
+                ", params=" + params +
+                '}';
     }
 }

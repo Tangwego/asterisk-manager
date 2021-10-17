@@ -1,9 +1,9 @@
 package top.wdcc.ast.ami.client;
 
 /**
- * Ami事件监听接口
+ * Ami Event Listener
  *
- * @author TANG
+ * @author Wavin
  */
 public interface AmiEventListener {
     /**

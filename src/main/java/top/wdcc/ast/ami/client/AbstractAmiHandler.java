@@ -16,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 抽象类分发Channel收到数据
  *
- * @author TANG
+ * @author Wavin
  */
 public abstract class AbstractAmiHandler extends SimpleChannelInboundHandler<AmiMessage> {
     private static final Logger logger = LoggerFactory.getLogger(AbstractAmiHandler.class);

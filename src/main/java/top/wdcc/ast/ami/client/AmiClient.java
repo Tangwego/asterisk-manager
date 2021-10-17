@@ -10,13 +10,13 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
- * Ami客户端
+ * Ami Client
  *
- * @author TANG
+ * @author Wavin
  */
 public class AmiClient implements AmiEventListener{
     private static final Logger logger = LoggerFactory.getLogger(AmiClient.class);
@@ -26,11 +26,15 @@ public class AmiClient implements AmiEventListener{
     private AtomicBoolean authenticated = new AtomicBoolean(false);
     private AmiEventListener listener;
     private AmiConfig config;
+    private static final ThreadPoolExecutor pingThread = new ThreadPoolExecutor(1, 1,
+            0L, TimeUnit.MILLISECONDS,
+            new LinkedBlockingQueue<Runnable>(), r -> new Thread(r, "Ami-Ping-Thread"));
 
     public AmiClient(String host, int port) {
         this.config = new AmiConfig();
         this.config.setHost(host);
         this.config.setPort(port);
+        this.config.setTimeout(30);
     }
 
     public AmiClient(AmiConfig config){
@@ -119,6 +123,9 @@ public class AmiClient implements AmiEventListener{
     @Override
     public void onLogin(boolean success) {
         logger.info("authenticated result: [{}]", success);
+        if (success) {
+            pingThread.submit(new Pingable(this, 3000));
+        }
         authenticated.set(true);
         this.isLogin = success;
         if (this.listener != null) {

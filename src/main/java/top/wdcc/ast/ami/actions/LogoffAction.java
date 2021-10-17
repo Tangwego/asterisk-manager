@@ -3,7 +3,7 @@ package top.wdcc.ast.ami.actions;
 /**
  * 登出ami
  *
- * @author TANG
+ * @author Wavin
  */
 public class LogoffAction extends AmiAction {
     private static final String ACTION = "logoff";

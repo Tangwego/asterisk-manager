@@ -3,7 +3,7 @@ package top.wdcc.ast.ami.actions;
 /**
  * 登录ami
  *
- * @author TANG
+ * @author Wavin
  */
 public class LoginAction extends AmiAction {
     private static final String ACTION = "login";
