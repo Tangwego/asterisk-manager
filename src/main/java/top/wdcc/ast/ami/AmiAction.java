@@ -1,4 +1,4 @@
-package top.wdcc.ast.ami.actions;
+package top.wdcc.ast.ami;
 
 import top.wdcc.ast.utils.UuidUtils;
 
@@ -14,9 +14,9 @@ import java.util.Map;
 public abstract class AmiAction {
 
     // AMI action 请求
-    private static final String AMI_ACTION = "action";
+    private static final String AMI_ACTION = "Action";
 
-    private static final String AMI_ACTIONID = "actionId";
+    private static final String AMI_ACTIONID = "ActionId";
 
     private static final String AMI_EVENTS = "Events";
 

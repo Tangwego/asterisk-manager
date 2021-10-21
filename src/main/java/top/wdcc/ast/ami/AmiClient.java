@@ -1,7 +1,6 @@
-package top.wdcc.ast.ami.client;
+package top.wdcc.ast.ami;
 
 import top.wdcc.ast.ami.actions.LogoffAction;
-import top.wdcc.ast.ami.actions.AmiAction;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -9,6 +8,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import top.wdcc.ast.ami.client.*;
 
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *
  * @author Wavin
  */
-public class AmiClient implements AmiEventListener{
+public class AmiClient implements AmiEventListener {
     private static final Logger logger = LoggerFactory.getLogger(AmiClient.class);
     private static EventLoopGroup group = new NioEventLoopGroup();
     private Channel channel;
@@ -124,7 +124,7 @@ public class AmiClient implements AmiEventListener{
     public void onLogin(boolean success) {
         logger.info("authenticated result: [{}]", success);
         if (success) {
-            pingThread.submit(new Pingable(this, 3000));
+            pingThread.submit(new PingThread(this, 3000));
         }
         authenticated.set(true);
         this.isLogin = success;

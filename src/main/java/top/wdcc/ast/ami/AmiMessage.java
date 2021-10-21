@@ -1,4 +1,4 @@
-package top.wdcc.ast.ami.client;
+package top.wdcc.ast.ami;
 
 import org.apache.commons.lang3.StringUtils;
 

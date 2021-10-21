@@ -1,5 +1,7 @@
 package top.wdcc.ast.ami.client;
 
+import top.wdcc.ast.ami.AmiMessage;
+
 import java.util.Map;
 
 /**

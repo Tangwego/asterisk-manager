@@ -12,4 +12,15 @@ public class AgiMessage {
     public Map<String, String> getParams() {
         return params;
     }
+
+    public void addParam(String field, String value) {
+        this.params.put(field, value);
+    }
+
+    @Override
+    public String toString() {
+        return "AgiMessage{" +
+                "params=" + params +
+                '}';
+    }
 }

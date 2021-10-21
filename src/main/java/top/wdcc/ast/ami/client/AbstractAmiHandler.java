@@ -1,6 +1,7 @@
 package top.wdcc.ast.ami.client;
 
-import top.wdcc.ast.ami.actions.AmiAction;
+import top.wdcc.ast.ami.AmiMessage;
+import top.wdcc.ast.ami.AmiAction;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;

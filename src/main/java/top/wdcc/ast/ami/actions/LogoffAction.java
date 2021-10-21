@@ -1,5 +1,7 @@
 package top.wdcc.ast.ami.actions;
 
+import top.wdcc.ast.ami.AmiAction;
+
 /**
  * 登出ami
  *

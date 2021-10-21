@@ -1,6 +1,5 @@
 package top.wdcc.ast.ami;
 
-import top.wdcc.ast.ami.actions.AmiAction;
 import top.wdcc.ast.ami.actions.ListCommandAction;
 import top.wdcc.ast.ami.client.*;
 

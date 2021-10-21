@@ -1,4 +1,6 @@
-package top.wdcc.ast.ami.client;
+package top.wdcc.ast.ami;
+
+import top.wdcc.ast.ami.client.AmiEvent;
 
 /**
  * Ami Event Listener

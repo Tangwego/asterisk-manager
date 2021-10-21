@@ -1,5 +1,7 @@
 package top.wdcc.ast.ami.actions;
 
+import top.wdcc.ast.ami.AmiAction;
+
 /**
  * 展示所有命令
  *

@@ -1,12 +1,8 @@
 package top.wdcc.ast.ami;
 
 import top.wdcc.ast.ami.actions.ListCommandAction;
-import top.wdcc.ast.ami.client.AmiClient;
 import top.wdcc.ast.ami.client.AmiConfig;
-import top.wdcc.ast.ami.client.AmiEventListener;
-import top.wdcc.ast.ami.actions.AmiAction;
 import top.wdcc.ast.ami.client.AmiEvent;
-import top.wdcc.ast.ami.client.AmiMessage;
 
 public class CommonUsageTest {
     public static void main(String[] args) throws InterruptedException {

@@ -1,6 +1,6 @@
 package top.wdcc.ast.ami.client;
 
-import top.wdcc.ast.ami.actions.AmiAction;
+import top.wdcc.ast.ami.AmiAction;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;

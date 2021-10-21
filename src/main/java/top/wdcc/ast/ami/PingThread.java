@@ -1,18 +1,18 @@
-package top.wdcc.ast.ami.client;
+package top.wdcc.ast.ami;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.wdcc.ast.ami.actions.PingAction;
 
-public class Pingable implements Runnable {
+public class PingThread implements Runnable {
 
-    private static final Logger logger = LoggerFactory.getLogger(Pingable.class);
+    private static final Logger logger = LoggerFactory.getLogger(PingThread.class);
 
     private AmiClient client;
 
     private long waitMills;
 
-    public Pingable(AmiClient client, long timeout){
+    public PingThread(AmiClient client, long timeout){
         this.client = client;
         this.waitMills = timeout;
     }

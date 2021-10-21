@@ -1,6 +1,5 @@
 package top.wdcc.ast.ami;
 
-import top.wdcc.ast.ami.actions.AmiAction;
 import top.wdcc.ast.ami.actions.OriginateAction;
 import top.wdcc.ast.ami.client.*;
 
@@ -25,7 +24,9 @@ public class OriginateActionTest {
         });
 
         amiClient.login();
-        AmiAction action = new OriginateAction("asterisk", "1001", "");
+        OriginateAction action = new OriginateAction("asterisk", "1001", "wavin");
+        action.application("Wait").data("");
+        System.out.println(action);
         AmiMessage amiMessage = amiClient.sendAction(action);
         System.out.println(amiMessage);
     }

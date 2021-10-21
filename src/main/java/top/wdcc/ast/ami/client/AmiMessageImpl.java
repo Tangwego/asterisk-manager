@@ -1,6 +1,7 @@
 package top.wdcc.ast.ami.client;
 
 import org.apache.commons.lang3.StringUtils;
+import top.wdcc.ast.ami.AmiMessage;
 
 import java.util.HashMap;
 import java.util.Map;
