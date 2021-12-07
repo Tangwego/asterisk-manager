@@ -4,39 +4,51 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>top.wdcc.ast</groupId>
-    <artifactId>ami-client</artifactId>
-    <version>1.0.0</version>
+    <groupId>top.wdcc.asterisk</groupId>
+    <artifactId>asterisk-manager</artifactId>
+    <packaging>pom</packaging>
+    <version>${revision}</version>
+    <modules>
+        <module>ami-client</module>
+        <module>asterisk-manager-common</module>
+        <module>agi-server</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <netty.version>4.1.62.Final</netty.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <logback.version>1.2.6</logback.version>
+        <commonlang.version>3.12.0</commonlang.version>
+        <asterisk.version>11.25.3</asterisk.version>
+        <revision>1.0.0</revision>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.62.Final</version>
+            <version>${netty.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.30</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.6</version>
+            <version>${logback.version}</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>${commonlang.version}</version>
         </dependency>
     </dependencies>
 
