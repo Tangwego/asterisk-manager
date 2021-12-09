@@ -1,6 +1,6 @@
 package top.wdcc.asterisk.ami.codec;
 
-import top.wdcc.asterisk.ami.AmiAction;
+import top.wdcc.asterisk.ami.actions.AmiAction;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;

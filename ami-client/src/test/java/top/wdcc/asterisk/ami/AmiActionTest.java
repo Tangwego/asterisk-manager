@@ -1,5 +1,6 @@
 package top.wdcc.asterisk.ami;
 
+import top.wdcc.asterisk.ami.actions.AmiAction;
 import top.wdcc.asterisk.ami.actions.PingAction;
 
 public class AmiActionTest {

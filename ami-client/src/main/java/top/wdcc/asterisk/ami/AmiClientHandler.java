@@ -1,5 +1,6 @@
 package top.wdcc.asterisk.ami;
 
+import top.wdcc.asterisk.ami.actions.AmiAction;
 import top.wdcc.asterisk.ami.actions.LoginAction;
 import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;

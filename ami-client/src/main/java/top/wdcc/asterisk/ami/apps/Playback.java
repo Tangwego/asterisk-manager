@@ -1,8 +1,10 @@
 package top.wdcc.asterisk.ami.apps;
 
 import org.apache.commons.lang3.StringUtils;
-import top.wdcc.asterisk.ami.Application;
 
+/**
+ * playback app
+ */
 public class Playback implements Application {
 
     public static final String APPLICATION_NAME = "Playback";

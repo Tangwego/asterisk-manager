@@ -1,9 +1,7 @@
 package top.wdcc.asterisk.ami.actions;
 
 import org.apache.commons.lang3.StringUtils;
-import top.wdcc.asterisk.ami.AmiAction;
-import top.wdcc.asterisk.ami.Application;
-import top.wdcc.asterisk.ami.apps.Playback;
+import top.wdcc.asterisk.ami.apps.Application;
 import top.wdcc.asterisk.common.utils.UuidUtils;
 
 public class OriginateAction extends AmiAction {

@@ -1,4 +1,4 @@
-package top.wdcc.asterisk.ami;
+package top.wdcc.asterisk.ami.apps;
 
 public interface Application {
     /**

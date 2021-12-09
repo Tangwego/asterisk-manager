@@ -1,7 +1,5 @@
 package top.wdcc.asterisk.ami.actions;
 
-import top.wdcc.asterisk.ami.AmiAction;
-
 /**
  * 登录ami
  *

@@ -1,14 +1,34 @@
 package top.wdcc.asterisk.ami.apps;
 
-import top.wdcc.asterisk.ami.Application;
+import org.apache.commons.lang3.StringUtils;
+import top.wdcc.asterisk.ami.Tech;
 
+/**
+ * dial app
+ */
 public class Dial implements Application {
     public static final String APPLICATION_NAME = "Dial";
 
-    public static final String DEFAULT_TECH = "SIP/";
+    public static final Tech DEFAULT_TECH = Tech.SIP;
 
-    public Dial(){
+    private Tech tech;
 
+    private String callee;
+
+    private String trunk;
+
+    public Dial(String callee) {
+        this(DEFAULT_TECH, callee);
+    }
+
+    public Dial(Tech tech, String callee) {
+        this(tech, callee, null);
+    }
+
+    public Dial(Tech tech,  String callee, String trunk){
+        this.tech = tech;
+        this.callee = callee;
+        this.trunk = trunk;
     }
 
     @Override
@@ -18,6 +38,9 @@ public class Dial implements Application {
 
     @Override
     public String getData() {
-        return "SIP/1002";
+        if (StringUtils.isEmpty(trunk)) {
+            return String.format("%s/%s", tech, callee);
+        }
+        return String.format("%s/%s@%s", tech, callee, trunk);
     }
 }

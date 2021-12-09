@@ -1,4 +1,4 @@
-package top.wdcc.asterisk.ami;
+package top.wdcc.asterisk.ami.actions;
 
 import org.apache.commons.lang3.StringUtils;
 import top.wdcc.asterisk.common.utils.UuidUtils;

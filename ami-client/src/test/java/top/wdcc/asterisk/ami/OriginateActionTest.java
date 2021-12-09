@@ -2,7 +2,6 @@ package top.wdcc.asterisk.ami;
 
 import top.wdcc.asterisk.ami.actions.OriginateAction;
 import top.wdcc.asterisk.ami.apps.Dial;
-import top.wdcc.asterisk.ami.apps.Playback;
 
 public class OriginateActionTest {
     public static void main(String[] args) throws InterruptedException {
@@ -28,7 +27,7 @@ public class OriginateActionTest {
 
         amiClient.login();
         OriginateAction action = new OriginateAction("1001");
-        action.application(new Dial());
+        action.application(new Dial("1002"));
         System.out.println(action);
         AmiMessage amiMessage = amiClient.sendAction(action);
         System.out.println(amiMessage);
