@@ -8,6 +8,8 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 public class AgiMessageDecoder extends ReplayingDecoder<AgiMessageDecoder.State> {
+    private static final String SPLITOR = ":";
+    private static final String HANGUP = "HANGUP";
     enum State {
         HEADER
     }
@@ -31,8 +33,22 @@ public class AgiMessageDecoder extends ReplayingDecoder<AgiMessageDecoder.State>
                 while (!readDoubleLF) {
                     String line = readLine(byteBuf);
                     if (StringUtils.isNotEmpty(line)) {
-                        String[] split = line.split("=");
-                        agiMessage.addParam(split[0], split[1]);
+                        if (StringUtils.containsIgnoreCase(line, HANGUP)) {
+                            agiMessage.setType(AgiType.HANGUP);
+                            readDoubleLF = true;
+                        } else if (StringUtils.contains(line, SPLITOR)) {
+                            String[] split = line.split(SPLITOR);
+                            agiMessage.addParam(split[0], split[1].substring(1));
+                            agiMessage.setType(AgiType.CONNECT);
+                        }else {
+                            int i = line.indexOf(" ");
+                            if (i != -1) {
+                                agiMessage.setType(AgiType.RESPONSE);
+                                agiMessage.setCode(Integer.parseInt(line.substring(0, i)));
+                                agiMessage.setMessage(line.substring(i + 1));
+                            }
+                            readDoubleLF = true;
+                        }
                     } else {
                         readDoubleLF = true;
                     }

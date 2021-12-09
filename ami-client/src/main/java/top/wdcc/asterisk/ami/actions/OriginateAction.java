@@ -21,7 +21,7 @@ public class OriginateAction extends AmiAction {
     public static final String APPLICATION = "application";
     public static final String DATA = "data";
     public static final String TIMEOUT = "timeout";
-    public static final String CALLER_ID = "callerID";
+    public static final String CALLER_ID = "callerid";
     public static final String VARIABLE = "variable";
     public static final String ACCOUNT = "account";
     public static final String EARLYMEDIA = "earlymedia";
