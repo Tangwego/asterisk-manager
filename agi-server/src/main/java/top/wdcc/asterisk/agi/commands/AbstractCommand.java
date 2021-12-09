@@ -1,4 +1,4 @@
-package top.wdcc.asterisk.agi.cmds;
+package top.wdcc.asterisk.agi.commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,14 @@ public abstract class AbstractCommand implements AgiCommand {
     public AbstractCommand(String name) {
         this.name = name;
         this.arguments = new ArrayList<>();
+    }
+
+    protected void addArgument(String ... args) {
+        if (args != null && args.length > 0) {
+            for (String arg: args) {
+                this.arguments.add(arg);
+            }
+        }
     }
 
     @Override

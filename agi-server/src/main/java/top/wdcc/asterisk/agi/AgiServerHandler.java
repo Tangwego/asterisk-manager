@@ -5,7 +5,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelId;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.reflections.Reflections;
-import top.wdcc.asterisk.agi.cmds.AgiCommand;
+import top.wdcc.asterisk.agi.commands.AgiCommand;
 
 import java.util.Map;
 import java.util.Queue;

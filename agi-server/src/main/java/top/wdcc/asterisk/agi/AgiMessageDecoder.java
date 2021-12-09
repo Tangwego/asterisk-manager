@@ -33,6 +33,7 @@ public class AgiMessageDecoder extends ReplayingDecoder<AgiMessageDecoder.State>
                 while (!readDoubleLF) {
                     String line = readLine(byteBuf);
                     if (StringUtils.isNotEmpty(line)) {
+                        System.out.println(line);
                         if (StringUtils.containsIgnoreCase(line, HANGUP)) {
                             agiMessage.setType(AgiType.HANGUP);
                             readDoubleLF = true;

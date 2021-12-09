@@ -1,4 +1,4 @@
-package top.wdcc.asterisk.agi.cmds;
+package top.wdcc.asterisk.agi.commands;
 
 public interface AgiCommand {
 
