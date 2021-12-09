@@ -4,15 +4,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.wdcc.asterisk.ami.actions.PingAction;
 
-public class PingThread implements Runnable {
+public class AmiPingThread implements Runnable {
 
-    private static final Logger logger = LoggerFactory.getLogger(PingThread.class);
+    private static final Logger logger = LoggerFactory.getLogger(AmiPingThread.class);
 
     private AmiClient client;
 
     private long waitMills;
 
-    public PingThread(AmiClient client, long timeout){
+    public AmiPingThread(AmiClient client, long timeout){
         this.client = client;
         this.waitMills = timeout;
     }

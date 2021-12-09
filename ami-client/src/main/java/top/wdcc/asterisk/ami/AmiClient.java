@@ -125,7 +125,7 @@ public class AmiClient implements AmiEventListener {
     public void onLogin(boolean success) {
         logger.info("authenticated result: [{}]", success);
         if (success) {
-            pingThread.submit(new PingThread(this, 3000));
+            pingThread.submit(new AmiPingThread(this, 3000));
         }
         authenticated.set(true);
         this.isLogin = success;

@@ -1,5 +1,6 @@
 package top.wdcc.asterisk.ami;
 
+import org.apache.commons.lang3.StringUtils;
 import top.wdcc.asterisk.common.utils.UuidUtils;
 
 import java.util.HashMap;
@@ -13,11 +14,11 @@ import java.util.Map;
 public abstract class AmiAction {
 
     // AMI action 请求
-    private static final String AMI_ACTION = "Action";
+    private static final String AMI_ACTION = "action";
 
-    private static final String AMI_ACTIONID = "ActionId";
+    private static final String AMI_ACTIONID = "actionid";
 
-    private static final String AMI_EVENTS = "Events";
+    private static final String AMI_EVENTS = "events";
 
     private Map<String, String> params;
 
@@ -38,8 +39,35 @@ public abstract class AmiAction {
         }
     }
 
+    public String getId() {
+        return params.get(AMI_ACTIONID);
+    }
+
     public void addParams(String field, String value) {
+        if (StringUtils.isAnyEmpty(field, value)) return;
         params.put(field, value);
+    }
+
+    public void appendParams(String field, String ... value) {
+        if (StringUtils.isEmpty(field) || StringUtils.isAllEmpty(value)) {
+            return;
+        }
+        String s = params.get(field);
+        StringBuilder sb = new StringBuilder();
+        if (StringUtils.isNotEmpty(s)) {
+            sb.append(s);
+            sb.append(",");
+        }
+        if (value != null && value.length > 0) {
+            for (String v: value) {
+                if (StringUtils.isNotEmpty(v)) {
+                    sb.append(v);
+                    sb.append(",");
+                }
+            }
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        params.put(field, sb.toString());
     }
 
     public void delParams(String field){

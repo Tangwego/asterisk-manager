@@ -4,7 +4,7 @@ import top.wdcc.asterisk.ami.actions.ListCommandAction;
 
 public class PossibleUsageTest {
     public static void main(String[] args) throws InterruptedException {
-        AmiClient amiClient = new AmiClient("192.168.0.120", 5038);
+        AmiClient amiClient = new AmiClient("192.168.2.100", 5038);
         amiClient.setEventListener(new AmiEventListener() {
             @Override
             public void onLogin(boolean success) {
