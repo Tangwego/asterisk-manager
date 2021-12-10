@@ -5,6 +5,8 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelId;
 import io.netty.channel.SimpleChannelInboundHandler;
 import org.reflections.Reflections;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import top.wdcc.asterisk.agi.commands.AgiCommand;
 
 import java.util.Map;
@@ -16,6 +18,8 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class AgiServerHandler extends SimpleChannelInboundHandler<AgiMessage> {
+
+    private static final Logger logger = LoggerFactory.getLogger(AgiServerHandler.class);
 
     private static final String SPLITOR = "\n";
 
@@ -35,6 +39,7 @@ public class AgiServerHandler extends SimpleChannelInboundHandler<AgiMessage> {
     });
 
     public AgiServerHandler(){
+        logger.info("find sub classes for BaseAgiScript interface.");
         Reflections reflections = new Reflections("");
         Set<Class<? extends BaseAgiScript>> agiScripts = reflections.getSubTypesOf(BaseAgiScript.class);
         agiScripts.forEach((script) -> {
@@ -47,6 +52,7 @@ public class AgiServerHandler extends SimpleChannelInboundHandler<AgiMessage> {
                 e.printStackTrace();
             }
         });
+        logger.info("find [{}] sub classes for BaseAgiScript interface.", agiScripts.size());
     }
 
     @Override

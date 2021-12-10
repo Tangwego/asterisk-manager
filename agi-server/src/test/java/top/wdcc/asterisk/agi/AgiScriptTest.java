@@ -4,8 +4,6 @@ import top.wdcc.asterisk.ami.*;
 import top.wdcc.asterisk.ami.actions.OriginateAction;
 import top.wdcc.asterisk.ami.apps.Agi;
 
-import java.util.concurrent.CountDownLatch;
-
 public class AgiScriptTest {
 
     public static void main(String[] args) throws InterruptedException {

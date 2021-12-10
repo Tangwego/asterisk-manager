@@ -18,8 +18,10 @@ public class AgiServer {
     private static final EventLoopGroup work = new NioEventLoopGroup();
     private boolean isStarted = false;
     private int port;
+    private AgiServerHandler handler;
     public AgiServer(int port) {
         this.port = port;
+        handler = new AgiServerHandler();
     }
 
     public void start(){
@@ -33,7 +35,7 @@ public class AgiServer {
                         socketChannel.pipeline()
                                 .addLast(new StringEncoder())
                                 .addLast(new AgiMessageDecoder())
-                                .addLast(new AgiServerHandler());
+                                .addLast(handler);
                     }
                 });
         try {
