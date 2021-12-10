@@ -6,6 +6,9 @@ import top.wdcc.asterisk.agi.commands.AnswerCommand;
 import top.wdcc.asterisk.agi.commands.HangupCommand;
 import top.wdcc.asterisk.agi.commands.StreamFileCommand;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AgiChannel {
     private AgiMessage message;
 
@@ -29,6 +32,16 @@ public class AgiChannel {
 
     public String getAgiScript(){
         return message.getParam(AgiMessage.AGI_NETWORK_SCRIPT);
+    }
+
+    public List<String> getArguments(){
+        List<String> result = new ArrayList<>();
+        message.getParams().forEach((name, param)-> {
+            if (name.contains(AgiMessage.AGI_ARGS)) {
+                result.add(param);
+            }
+        });
+        return result;
     }
 
     public AgiMessage sendCommand(String cmd){

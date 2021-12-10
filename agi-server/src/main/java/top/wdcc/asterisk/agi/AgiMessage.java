@@ -26,7 +26,7 @@ public class AgiMessage {
     public static final String AGI_ENHANCED       = "agi_enhanced";
     public static final String AGI_ACCOUNTCODE    = "agi_accountcode";
     public static final String AGI_THREADID       = "agi_threadid";
-    public static final String AGI_ARG_1          = "agi_arg_1";
+    public static final String AGI_ARGS           = "agi_arg_";
 
     private Map<String, String> params;
 

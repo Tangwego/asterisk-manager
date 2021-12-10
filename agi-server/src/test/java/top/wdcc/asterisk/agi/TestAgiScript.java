@@ -7,5 +7,6 @@ public class TestAgiScript implements BaseAgiScript {
         System.out.println(answer);
         AgiMessage agiMessage = channel.streamFile("demo-abouttotry");
         System.out.println(agiMessage);
+        System.out.println(channel.getArguments());
     }
 }

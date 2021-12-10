@@ -1,11 +1,25 @@
-package top.wdcc.asterisk.ami;
+package top.wdcc.asterisk.agi;
 
+import top.wdcc.asterisk.ami.*;
 import top.wdcc.asterisk.ami.actions.OriginateAction;
 import top.wdcc.asterisk.ami.apps.Agi;
-import top.wdcc.asterisk.ami.apps.Dial;
 
-public class DialAppTest {
+import java.util.concurrent.CountDownLatch;
+
+public class AgiScriptTest {
+
     public static void main(String[] args) throws InterruptedException {
+        AgiServer server = new AgiServer(8088);
+        new Thread(()->{
+            server.start();
+        }).start();
+
+        do{
+            Thread.sleep(3000);
+            System.out.println("server is not started yet !");
+        }while (!server.isStarted());
+
+        // to run this test must start agi server first
         AmiConfig amiConfig = new AmiConfig();
         amiConfig.setUsername("asterisk");
         amiConfig.setSecret("asterisk");
@@ -28,7 +42,7 @@ public class DialAppTest {
 
         amiClient.login();
         OriginateAction action = new OriginateAction("1001");
-        action.application(new Dial("1002"));
+        action.application(new Agi("agi://192.168.122.202:8088/TestAgiScript", "name","password"));
         System.out.println(action);
         AmiMessage amiMessage = amiClient.sendAction(action);
         System.out.println(amiMessage);
