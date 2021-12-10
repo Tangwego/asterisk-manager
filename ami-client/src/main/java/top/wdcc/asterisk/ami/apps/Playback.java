@@ -7,7 +7,7 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class Playback implements Application {
 
-    public static final String APPLICATION_NAME = "Playback";
+    private static final String APPLICATION_NAME = "Playback";
 
     private String fileName;
     private String[] options;

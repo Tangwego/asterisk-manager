@@ -1,5 +1,7 @@
 package top.wdcc.asterisk.agi.commands;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +19,9 @@ public abstract class AbstractCommand implements AgiCommand {
     protected void addArgument(String ... args) {
         if (args != null && args.length > 0) {
             for (String arg: args) {
-                this.arguments.add(arg);
+                if (StringUtils.isNotEmpty(arg)) {
+                    this.arguments.add(arg);
+                }
             }
         }
     }
@@ -29,8 +33,10 @@ public abstract class AbstractCommand implements AgiCommand {
             sb.append(name);
             sb.append(" ");
             for (String arg: arguments) {
-                sb.append(arg);
-                sb.append(" ");
+                if (StringUtils.isNotEmpty(arg)) {
+                    sb.append(arg);
+                    sb.append(" ");
+                }
             }
             return sb.toString();
         }

@@ -7,9 +7,9 @@ import top.wdcc.asterisk.ami.Tech;
  * dial app
  */
 public class Dial implements Application {
-    public static final String APPLICATION_NAME = "Dial";
+    private static final String APPLICATION_NAME = "Dial";
 
-    public static final Tech DEFAULT_TECH = Tech.SIP;
+    private static final Tech DEFAULT_TECH = Tech.SIP;
 
     private Tech tech;
 

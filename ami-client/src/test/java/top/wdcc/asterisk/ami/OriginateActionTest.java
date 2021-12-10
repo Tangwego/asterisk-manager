@@ -1,6 +1,7 @@
 package top.wdcc.asterisk.ami;
 
 import top.wdcc.asterisk.ami.actions.OriginateAction;
+import top.wdcc.asterisk.ami.apps.Agi;
 import top.wdcc.asterisk.ami.apps.Playback;
 
 public class OriginateActionTest {
@@ -30,7 +31,7 @@ public class OriginateActionTest {
         action.application(new Playback("demo-abouttotry"));
 //        action.application(new Playback("demo-nogo"));
 //        action.application(new Dial("1002"));
-//        action.application(new Agi("agi://192.168.122.202:8088/TestAgiScript", "path=ooaoooa"));
+        action.application(new Agi("agi://192.168.122.202:8088/TestAgiScript", "path=ooaoooa"));
         System.out.println(action);
         AmiMessage amiMessage = amiClient.sendAction(action);
         System.out.println(amiMessage);

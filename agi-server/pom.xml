@@ -52,7 +52,6 @@
         <dependency>
             <groupId>top.wdcc.asterisk</groupId>
             <artifactId>ami-client</artifactId>
-            <scope>test</scope>
         </dependency>
 
         <dependency>

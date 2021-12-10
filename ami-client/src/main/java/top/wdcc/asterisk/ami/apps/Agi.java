@@ -3,7 +3,7 @@ package top.wdcc.asterisk.ami.apps;
 import org.apache.commons.lang3.StringUtils;
 
 public class Agi implements Application {
-    public static final String APPLICATION_NAME = "AGI";
+    private static final String APPLICATION_NAME = "AGI";
 
     private String url;
 

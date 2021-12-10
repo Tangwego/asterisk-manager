@@ -1,7 +1,7 @@
 package top.wdcc.asterisk.ami.apps;
 
 public class Park implements Application {
-    public static final String APPLICATION_NAME = "Park";
+    private static final String APPLICATION_NAME = "Park";
 
     public Park(long timeout, String context,  int priority, String ... options){
 

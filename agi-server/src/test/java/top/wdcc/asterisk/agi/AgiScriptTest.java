@@ -1,10 +1,14 @@
 package top.wdcc.asterisk.agi;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import top.wdcc.asterisk.ami.*;
 import top.wdcc.asterisk.ami.actions.OriginateAction;
 import top.wdcc.asterisk.ami.apps.Agi;
 
 public class AgiScriptTest {
+
+    private static final Logger logger = LoggerFactory.getLogger(AgiScriptTest.class);
 
     public static void main(String[] args) throws InterruptedException {
         AgiServer server = new AgiServer(8088);
@@ -28,18 +32,18 @@ public class AgiScriptTest {
             @Override
             public void onLogin(boolean success) {
                 // TODO login
-                System.out.println("login success: " + success);
+                logger.info("login success: {}", success);
             }
 
             @Override
             public void onEvent(AmiEvent event) {
                 // TODO received event
-                System.out.println("recevied event: " + event.toString());
+                logger.info("recevied event: {}", event);
             }
         });
 
         amiClient.login();
-        OriginateAction action = new OriginateAction("1001");
+        OriginateAction action = new OriginateAction("1002");
         action.application(new Agi("agi://192.168.122.202:8088/TestAgiScript", "name","password"));
         System.out.println(action);
         AmiMessage amiMessage = amiClient.sendAction(action);
