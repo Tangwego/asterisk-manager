@@ -1,6 +1,7 @@
 package top.wdcc.asterisk.agi;
 
 import io.netty.channel.Channel;
+import top.wdcc.asterisk.agi.commands.AgiCommand;
 import top.wdcc.asterisk.agi.commands.AnswerCommand;
 import top.wdcc.asterisk.agi.commands.HangupCommand;
 import top.wdcc.asterisk.agi.commands.StreamFileCommand;
@@ -30,9 +31,16 @@ public class AgiChannel {
         return message.getParam(AgiMessage.AGI_NETWORK_SCRIPT);
     }
 
+    public AgiMessage sendCommand(String cmd){
+        return handler.sendCommand(channel, new AgiCommand() {
+            @Override
+            public String getCommandString() {
+                return cmd;
+            }
+        });
+    }
+
     public AgiMessage close(){
         return handler.sendCommand(channel, new HangupCommand());
     }
-
-
 }

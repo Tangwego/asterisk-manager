@@ -10,6 +10,8 @@ import java.util.List;
 public class AgiMessageDecoder extends ReplayingDecoder<AgiMessageDecoder.State> {
     private static final String SPLITOR = ":";
     private static final String HANGUP = "HANGUP";
+    private static final int NUMBERIC_LENGTH = 3;
+    private static final String SHOW_USAGE_END = "520 End of proper usage.";
     enum State {
         HEADER
     }
@@ -32,23 +34,32 @@ public class AgiMessageDecoder extends ReplayingDecoder<AgiMessageDecoder.State>
                 boolean readDoubleLF = false;
                 while (!readDoubleLF) {
                     String line = readLine(byteBuf);
+//                    System.out.println(String.format("[%s]", line));
                     if (StringUtils.isNotEmpty(line)) {
-                        System.out.println(line);
                         if (StringUtils.containsIgnoreCase(line, HANGUP)) {
+                            // hangup
                             agiMessage.setType(AgiType.HANGUP);
                             readDoubleLF = true;
-                        } else if (StringUtils.contains(line, SPLITOR)) {
-                            String[] split = line.split(SPLITOR);
-                            agiMessage.addParam(split[0], split[1].substring(1));
-                            agiMessage.setType(AgiType.CONNECT);
-                        }else {
-                            int i = line.indexOf(" ");
-                            if (i != -1) {
-                                agiMessage.setType(AgiType.RESPONSE);
-                                agiMessage.setCode(Integer.parseInt(line.substring(0, i)));
-                                agiMessage.setMessage(line.substring(i + 1));
+                        } else if (StringUtils.isNumeric(StringUtils.substring(line, 0, NUMBERIC_LENGTH))) {
+                            // response
+                            agiMessage.setType(AgiType.RESPONSE);
+                            agiMessage.setCode(Integer.parseInt(StringUtils.substring(line, 0, NUMBERIC_LENGTH)));
+                            agiMessage.setMessage(StringUtils.substring(line, NUMBERIC_LENGTH + 1));
+                            if (agiMessage.getMessage().startsWith("result")) {
+                                readDoubleLF = true;
                             }
-                            readDoubleLF = true;
+                        } else {
+                            // agi connect message
+                            if (!line.startsWith("agi_") && !line.startsWith("ogi_")) {
+                                agiMessage.appendMessage(line);
+                                if (StringUtils.endsWithIgnoreCase(line, SHOW_USAGE_END)) {
+                                    readDoubleLF = true;
+                                }
+                            } else {
+                                String[] split = line.split(SPLITOR);
+                                agiMessage.addParam(split[0], split[1].substring(1));
+                                agiMessage.setType(AgiType.CONNECT);
+                            }
                         }
                     } else {
                         readDoubleLF = true;
