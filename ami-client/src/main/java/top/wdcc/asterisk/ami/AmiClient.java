@@ -70,7 +70,8 @@ public class AmiClient implements AmiEventListener {
     private void login(AmiConfig config) throws InterruptedException {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(group)
-                .channelFactory(NioSocketChannel::new)
+//                .channelFactory(NioSocketChannel::new)
+                .channel(NioSocketChannel.class)
                 .option(ChannelOption.SO_KEEPALIVE, true)
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override

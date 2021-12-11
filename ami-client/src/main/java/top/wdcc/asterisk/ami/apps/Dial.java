@@ -6,7 +6,7 @@ import top.wdcc.asterisk.ami.Tech;
 /**
  * dial app
  */
-public class Dial implements Application {
+public class Dial extends AbstractApplication {
     private static final String APPLICATION_NAME = "Dial";
 
     private static final Tech DEFAULT_TECH = Tech.SIP;

@@ -9,7 +9,7 @@ public class DialAppTest {
         AmiConfig amiConfig = new AmiConfig();
         amiConfig.setUsername("asterisk");
         amiConfig.setSecret("asterisk");
-        amiConfig.setHost("192.168.2.100");
+        amiConfig.setHost("192.168.0.200");
         amiConfig.setPort(5038);
         AmiClient amiClient = new AmiClient(amiConfig);
         amiClient.setEventListener(new AmiEventListener() {

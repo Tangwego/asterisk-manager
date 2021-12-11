@@ -12,7 +12,6 @@
         <module>ami-client</module>
         <module>asterisk-manager-common</module>
         <module>agi-server</module>
-        <module>test-module</module>
     </modules>
 
     <properties>

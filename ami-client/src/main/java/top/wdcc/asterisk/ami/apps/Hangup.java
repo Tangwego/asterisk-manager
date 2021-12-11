@@ -1,6 +1,6 @@
 package top.wdcc.asterisk.ami.apps;
 
-public class Hangup implements Application {
+public class Hangup extends AbstractApplication {
     private static final String APPLICATION_NAME = "Hangup";
 
     private String cause;

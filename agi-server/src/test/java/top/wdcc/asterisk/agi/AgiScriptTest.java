@@ -25,7 +25,7 @@ public class AgiScriptTest {
         AmiConfig amiConfig = new AmiConfig();
         amiConfig.setUsername("asterisk");
         amiConfig.setSecret("asterisk");
-        amiConfig.setHost("192.168.2.100");
+        amiConfig.setHost("192.168.0.200");
         amiConfig.setPort(5038);
         AmiClient amiClient = new AmiClient(amiConfig);
         amiClient.setEventListener(new AmiEventListener() {
@@ -43,8 +43,8 @@ public class AgiScriptTest {
         });
 
         amiClient.login();
-        OriginateAction action = new OriginateAction("1002");
-        action.application(new Agi("agi://192.168.122.202:8088/TestAgiScript", "name","password"));
+        OriginateAction action = new OriginateAction("1001");
+        action.application(new Agi("agi://192.168.0.105:8088/TestAgiScript", "name","password"));
         System.out.println(action);
         AmiMessage amiMessage = amiClient.sendAction(action);
         System.out.println(amiMessage);

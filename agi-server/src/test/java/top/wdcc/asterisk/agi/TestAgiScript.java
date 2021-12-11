@@ -13,7 +13,7 @@ public class TestAgiScript implements BaseAgiScript {
     @Override
     public void service(AgiChannel channel) {
         channel.answer();
-        channel.sayDateTime(new Date(), "digits/at", TimeZone.getDefault());
+//        channel.sayDateTime(new Date(), "digits/at", TimeZone.getDefault());
         channel.exec(new Playback("demo-abouttotry"));
     }
 }
