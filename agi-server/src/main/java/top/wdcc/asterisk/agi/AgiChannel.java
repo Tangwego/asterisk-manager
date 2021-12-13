@@ -1,6 +1,7 @@
 package top.wdcc.asterisk.agi;
 
 import io.netty.channel.Channel;
+import org.apache.commons.lang3.StringUtils;
 import top.wdcc.asterisk.agi.commands.*;
 import top.wdcc.asterisk.ami.apps.Application;
 import top.wdcc.asterisk.ami.apps.Hangup;
@@ -23,48 +24,48 @@ public class AgiChannel {
         this.handler = handler;
     }
 
-    public AgiMessage answer(){
-        return handler.sendCommand(channel, new AnswerCommand());
+    public AgiMessage answer() {
+        return sendCommand(new AnswerCommand());
     }
 
     public AgiMessage exec(Application application) {
-        return handler.sendCommand(channel, new ExecCommand(application));
+        return sendCommand(new ExecCommand(application));
     }
 
     public AgiMessage sayNumber(int number) {
-        return handler.sendCommand(channel, new SayNumberCommand(number));
+        return sendCommand(new SayNumberCommand(number));
     }
 
     public AgiMessage sayPhonetic(String phoneNumber) {
-        return handler.sendCommand(channel, new SayPhoneticCommand(phoneNumber));
+        return sendCommand(new SayPhoneticCommand(phoneNumber));
     }
 
     public AgiMessage sayAlpha(String alpha) {
-        return handler.sendCommand(channel, new SayAlphaCommand(alpha));
+        return sendCommand(new SayAlphaCommand(alpha));
     }
 
     public AgiMessage sayDigits(String digits) {
-        return handler.sendCommand(channel, new SayDigitsCommand(digits));
+        return sendCommand(new SayDigitsCommand(digits));
     }
 
     public AgiMessage sayDate(Date date) {
-        return handler.sendCommand(channel, new SayDateCommand(SayDateCommand.TYPE_DATE, date));
+        return sendCommand(new SayDateCommand(SayDateCommand.TYPE_DATE, date));
     }
 
     public AgiMessage sayDateTime(Date date, String format, TimeZone timeZone) {
-        return handler.sendCommand(channel, new SayDateCommand(SayDateCommand.TYPE_DATETIME, date, format, timeZone));
+        return sendCommand(new SayDateCommand(SayDateCommand.TYPE_DATETIME, date, format, timeZone));
     }
 
     public AgiMessage sayTime(Date date) {
-        return handler.sendCommand(channel, new SayDateCommand(SayDateCommand.TYPE_TIME, date));
+        return sendCommand(new SayDateCommand(SayDateCommand.TYPE_TIME, date));
     }
 
-    public AgiMessage setExtension(String extension) {
-        return handler.sendCommand(channel, new SetExtensionCommand(extension));
+    public AgiMessage addExtension(String extension) {
+        return sendCommand(new SetExtensionCommand(extension));
     }
 
     public AgiMessage streamFile(String file) {
-        return handler.sendCommand(channel, new StreamFileCommand(file));
+        return sendCommand(new StreamFileCommand(file));
     }
 
     public String getAgiScript(){
@@ -74,7 +75,7 @@ public class AgiChannel {
     public List<String> getArguments(){
         List<String> result = new ArrayList<>();
         message.getParams().forEach((name, param)-> {
-            if (name.contains(AgiMessage.AGI_ARGS)) {
+            if (StringUtils.startsWith(name, AgiMessage.AGI_ARGS)) {
                 result.add(param);
             }
         });
@@ -90,19 +91,20 @@ public class AgiChannel {
     }
 
     public AgiMessage sendCommand(String cmd){
-        return handler.sendCommand(channel, new AgiCommand() {
-            @Override
-            public String getCommandString() {
-                return cmd;
-            }
-        });
+        return sendCommand(() -> cmd);
+    }
+
+    public AgiMessage sendCommand(AgiCommand cmd){
+        return handler.sendCommand(channel, cmd);
     }
 
     public void hangup(){
-        handler.sendCommand(channel, new ExecCommand(new Hangup()));
+        sendCommand(new HangupCommand(getChannelName()));
     }
 
-    public AgiMessage close(){
-        return handler.sendCommand(channel, new HangupCommand(getChannelName()));
+    public void close(){
+        if (this.channel != null) {
+            this.channel.closeFuture();
+        }
     }
 }
