@@ -1,6 +1,7 @@
 package top.wdcc.asterisk.agi.commands;
 
 import org.apache.commons.lang3.StringUtils;
+import top.wdcc.asterisk.agi.AgiDefaultValue;
 
 import java.util.Date;
 import java.util.TimeZone;
@@ -21,7 +22,7 @@ public class SayDateCommand extends AbstractSayCommand {
     }
 
     public SayDateCommand(String type, Date date) {
-        this(type, date, DEFAULT_ESCAPE_DIGITS);
+        this(type, date, AgiDefaultValue.DEFAULT_ESCAPE_DIGITS);
     }
 
     public SayDateCommand(String type, Date date, String escapeDigits) {
@@ -29,7 +30,7 @@ public class SayDateCommand extends AbstractSayCommand {
     }
 
     public SayDateCommand(String type, Date date,String format, TimeZone timeZone) {
-        this(type, date, DEFAULT_ESCAPE_DIGITS, format, timeZone);
+        this(type, date, AgiDefaultValue.DEFAULT_ESCAPE_DIGITS, format, timeZone);
     }
 
     public SayDateCommand(String type, Date date, String escapeDigits, String format, TimeZone timeZone) {

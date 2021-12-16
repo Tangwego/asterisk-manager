@@ -1,13 +1,13 @@
 package top.wdcc.asterisk.agi.commands;
 
+import top.wdcc.asterisk.agi.AgiDefaultValue;
+
 public class WaitForDigitCommand extends AbstractCommand {
 
     private static final String COMMAND = "WAIT FOR";
 
-    private static final long DEFAULT_TIMEOUT = 30000;
-
     public WaitForDigitCommand(String digit) {
-        this(digit, DEFAULT_TIMEOUT);
+        this(digit, AgiDefaultValue.DEFAULT_TIMEOUT);
     }
 
     public WaitForDigitCommand(String digit, long timeout) {

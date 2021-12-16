@@ -1,9 +1,6 @@
 package top.wdcc.asterisk.agi;
 
-import top.wdcc.asterisk.agi.commands.AgiCommand;
-import top.wdcc.asterisk.agi.commands.SayNumberCommand;
-import top.wdcc.asterisk.agi.commands.SayPhoneticCommand;
-import top.wdcc.asterisk.agi.commands.WaitForDigitCommand;
+import top.wdcc.asterisk.agi.commands.*;
 
 public class AgiCommandTest {
     public static void main(String[] args) {
@@ -14,6 +11,12 @@ public class AgiCommandTest {
         System.out.println(sayNumberCommand.getCommandString());
 
         AgiCommand waitForDigitCommand = new WaitForDigitCommand("1111");
-        System.out.printf(waitForDigitCommand.getCommandString());
+        System.out.println(waitForDigitCommand.getCommandString());
+
+        AgiCommand getVariableCommand = new GetVariableCommand("aa");
+        System.out.println(getVariableCommand.getCommandString());
+
+        AgiCommand receiveCharCommand = new ReceiveCharCommand();
+        System.out.println(receiveCharCommand.getCommandString());
     }
 }
