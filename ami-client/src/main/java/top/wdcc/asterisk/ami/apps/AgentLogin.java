@@ -8,12 +8,8 @@ public class AgentLogin extends AbstractApplication {
     }
 
     public AgentLogin(String agentNo, String ... options){
+        super(APPLICATION_NAME);
         addOptions(agentNo);
         addOptions(options);
-    }
-
-    @Override
-    public String getName() {
-        return APPLICATION_NAME;
     }
 }

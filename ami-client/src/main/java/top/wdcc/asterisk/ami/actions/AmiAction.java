@@ -44,7 +44,9 @@ public abstract class AmiAction {
     }
 
     public void addParams(String field, String value) {
-        if (StringUtils.isAnyEmpty(field, value)) return;
+        if (StringUtils.isAnyEmpty(field, value)) {
+            return;
+        }
         params.put(field, value);
     }
 

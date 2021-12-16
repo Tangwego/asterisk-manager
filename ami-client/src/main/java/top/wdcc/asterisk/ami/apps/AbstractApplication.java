@@ -11,6 +11,17 @@ public abstract class AbstractApplication implements Application {
 
     private static final String OPTIONS_SPLITOR = ",";
 
+    private String app;
+
+    public AbstractApplication(String appName){
+        this.app = appName;
+    }
+
+    @Override
+    public String getName() {
+        return this.app;
+    }
+
     protected void addOptions(String ... options) {
         if (StringUtils.isAllEmpty(options)) {
             return;

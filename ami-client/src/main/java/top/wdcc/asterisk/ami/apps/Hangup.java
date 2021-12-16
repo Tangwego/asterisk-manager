@@ -10,12 +10,8 @@ public class Hangup extends AbstractApplication {
     }
 
     public Hangup(String cause) {
+        super(APPLICATION_NAME);
         this.cause = cause;
-    }
-
-    @Override
-    public String getName() {
-        return APPLICATION_NAME;
     }
 
     @Override

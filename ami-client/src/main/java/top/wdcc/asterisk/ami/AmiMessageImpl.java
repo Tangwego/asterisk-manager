@@ -60,20 +60,11 @@ public class AmiMessageImpl implements AmiMessage {
         params.put(field, value);
     }
 
-//    @Override
-//    public String toString() {
-//        return "AmiMessage[" +
-//                "type=" + type +
-//                ", params=has [" + params.size() +
-//                "] fields]";
-//    }
-
-
     @Override
     public String toString() {
-        return "AmiMessageImpl{" +
+        return "AmiMessage[" +
                 "type=" + type +
-                ", params=" + params +
-                '}';
+                ", params=has [" + params.size() +
+                "] fields]";
     }
 }

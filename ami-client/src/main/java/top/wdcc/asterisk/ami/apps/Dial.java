@@ -26,14 +26,10 @@ public class Dial extends AbstractApplication {
     }
 
     public Dial(Tech tech,  String callee, String trunk){
+        super(APPLICATION_NAME);
         this.tech = tech;
         this.callee = callee;
         this.trunk = trunk;
-    }
-
-    @Override
-    public String getName() {
-        return APPLICATION_NAME;
     }
 
     @Override
