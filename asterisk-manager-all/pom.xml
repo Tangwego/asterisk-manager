@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>agi-server</artifactId>
+    <artifactId>asterisk-manager-all</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -34,6 +34,19 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>top.wdcc.asterisk</groupId>
+            <artifactId>agi-server</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>top.wdcc.asterisk</groupId>
+                    <artifactId>asterisk-manager-common</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>top.wdcc.asterisk</groupId>
+                    <artifactId>ami-client</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
-
 </project>
