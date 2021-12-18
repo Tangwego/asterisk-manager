@@ -10,9 +10,9 @@ import top.wdcc.asterisk.ami.AmiMessageImpl;
 import java.util.List;
 
 /**
- * Ami Message Decoder
- *
- * @author Wavin
+ * Ami Message Decoder.
+ * decode before received ami messages.
+ * @author wavin
  */
 public class AmiMessageDecoder extends ReplayingDecoder<AmiMessageDecoder.State> {
 

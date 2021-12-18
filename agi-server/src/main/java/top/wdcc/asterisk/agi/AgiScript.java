@@ -2,6 +2,10 @@ package top.wdcc.asterisk.agi;
 
 import java.lang.annotation.*;
 
+/**
+ * agi script annotation (not in use yet)
+ * @author wavin
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
 @Documented

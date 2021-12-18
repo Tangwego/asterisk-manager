@@ -6,6 +6,18 @@ import top.wdcc.asterisk.agi.AgiDefaultValue;
 import java.util.Date;
 import java.util.TimeZone;
 
+/**
+ * @see <a href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AGICommand_say+date">
+ *     https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AGICommand_say+date
+ *     </a>
+ * @see <a href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AGICommand_say+datetime">
+ *     https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AGICommand_say+datetime
+ *     </a>
+ * @see <a href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AGICommand_say+time">
+ *     https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AGICommand_say+time
+ *     </a>
+ * @author wavin
+ */
 public class SayDateCommand extends AbstractSayCommand {
     public static final String TYPE_DATE = "DATE";
 

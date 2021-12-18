@@ -8,9 +8,9 @@ import io.netty.handler.codec.MessageToByteEncoder;
 import java.util.Map;
 
 /**
- * Action Encoder
- *
- * @author Wavin
+ * ami action encoder.
+ * use when ami action send before.
+ * @author wavin
  */
 public class AmiActionEncoder extends MessageToByteEncoder<AmiAction> {
     public static final String COMMAND_DELIMITER = "\r\n";

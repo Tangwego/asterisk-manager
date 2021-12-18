@@ -3,6 +3,10 @@ package top.wdcc.asterisk.agi;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * agi channel message entity
+ * @author wavin
+ */
 public class AgiMessage {
     public static final String AGI_NETWORK        = "agi_network";
     public static final String AGI_NETWORK_SCRIPT = "agi_network_script";

@@ -7,6 +7,10 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
+/**
+ * agi message decoder
+ * @author wavin
+ */
 public class AgiMessageDecoder extends ReplayingDecoder<AgiMessageDecoder.State> {
     private static final String SPLITOR = ":";
     private static final String HANGUP = "HANGUP";

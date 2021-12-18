@@ -1,13 +1,11 @@
 package top.wdcc.asterisk.ami;
 
-import top.wdcc.asterisk.ami.AmiMessage;
-
 import java.util.Map;
 
 /**
- * Ami Event
+ * ami event entity.
  *
- * @author Wavin
+ * @author wavin
  */
 public class AmiEvent {
 

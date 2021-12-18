@@ -3,7 +3,7 @@ package top.wdcc.asterisk.ami;
 /**
  * Ami Connection Exception
  *
- * @author Wavin
+ * @author wavin
  */
 public class AmiConnectException extends RuntimeException{
 

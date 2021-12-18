@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 抽象Action类
+ * abstract ami action
  *
  * @author Wavin
  */

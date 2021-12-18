@@ -12,6 +12,10 @@ import io.netty.handler.codec.string.StringEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * an agi server for external programs.
+ * @author wavin
+ */
 public class AgiServer {
     private static final Logger logger = LoggerFactory.getLogger(AgiServer.class);
     private static final EventLoopGroup boss = new NioEventLoopGroup();

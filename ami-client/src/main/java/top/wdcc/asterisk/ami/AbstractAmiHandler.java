@@ -14,9 +14,9 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 抽象类分发Channel收到数据
+ * abstract netty channel handler.
  *
- * @author Wavin
+ * @author wavin
  */
 public abstract class AbstractAmiHandler extends SimpleChannelInboundHandler<AmiMessage> {
     private static final Logger logger = LoggerFactory.getLogger(AbstractAmiHandler.class);

@@ -3,7 +3,7 @@ package top.wdcc.asterisk.ami;
 /**
  * Ami Event Listener
  *
- * @author Wavin
+ * @author wavin
  */
 public interface AmiEventListener {
     /**

@@ -1,9 +1,10 @@
 package top.wdcc.asterisk.ami;
 
 /**
- * Ami Config
+ * ami config entity
+ * includes ami username, secret, host and port.
  *
- * @author Wavin
+ * @author wavin
  */
 public class AmiConfig {
     private String host;

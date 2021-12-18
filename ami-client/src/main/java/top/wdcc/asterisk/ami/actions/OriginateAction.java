@@ -4,6 +4,13 @@ import org.apache.commons.lang3.StringUtils;
 import top.wdcc.asterisk.ami.apps.Application;
 import top.wdcc.asterisk.common.utils.UuidUtils;
 
+/**
+ * @see <a
+ * href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+ManagerAction_Originate">
+ * https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+ManagerAction_Originate
+ * </a>
+ * @author wavin
+ */
 public class OriginateAction extends AmiAction {
     private static final String ACTION = "originate";
 

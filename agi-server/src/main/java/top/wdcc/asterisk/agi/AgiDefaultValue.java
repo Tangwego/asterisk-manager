@@ -1,5 +1,9 @@
 package top.wdcc.asterisk.agi;
 
+/**
+ * default agi command variables' value
+ * @author wavin
+ */
 public class AgiDefaultValue {
     public static final String DEFAULT_CONTEXT = "default";
     public static final int DEFAULT_PRIORITY = 1;

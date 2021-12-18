@@ -2,6 +2,12 @@ package top.wdcc.asterisk.ami;
 
 /**
  * like a trunk type
+ * @see <a
+ * href="https://github.com/asterisk-java/asterisk-java">
+ * https://github.com/asterisk-java/asterisk-java
+ * </a>
+ * TechType
+ * @author wavin
  */
 public enum Tech {
     //

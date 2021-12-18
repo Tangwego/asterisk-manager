@@ -5,6 +5,11 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * this is an abstract and a base implementation for {@code AgiCommand}
+ * @see top.wdcc.asterisk.agi.commands.AgiCommand
+ * @author wavin
+ */
 public abstract class AbstractCommand implements AgiCommand {
 
     private String name;

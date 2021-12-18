@@ -17,6 +17,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * agi server handler for netty
+ * @author wavin
+ */
 public class AgiServerHandler extends SimpleChannelInboundHandler<AgiMessage> {
 
     private static final Logger logger = LoggerFactory.getLogger(AgiServerHandler.class);

@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 /**
  * Ami Client
  *
- * @author Wavin
+ * @author wavin
  */
 public class AmiClient implements AmiEventListener {
     private static final Logger logger = LoggerFactory.getLogger(AmiClient.class);

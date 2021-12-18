@@ -5,6 +5,11 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * an abstract application implementation
+ * super class for other implementation classes
+ * @author wavin
+ */
 public abstract class AbstractApplication implements Application {
 
     private List<String> options;

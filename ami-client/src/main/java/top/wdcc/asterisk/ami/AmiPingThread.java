@@ -4,6 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import top.wdcc.asterisk.ami.actions.PingAction;
 
+/**
+ * ami ping thread,
+ * useful in ami connect timeout scenarios.
+ *
+ * @author wavin
+ */
 public class AmiPingThread implements Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger(AmiPingThread.class);

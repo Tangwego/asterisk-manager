@@ -2,6 +2,12 @@ package top.wdcc.asterisk.agi.commands;
 
 import top.wdcc.asterisk.agi.AgiDefaultValue;
 
+/**
+ * @see <a href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AGICommand_record+file">
+ *     https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+AGICommand_record+file
+ *     </a>
+ * @author wavin
+ */
 public class RecordFileCommand extends AbstractCommand {
 
     private static final String COMMAND = "RECORD FILE";

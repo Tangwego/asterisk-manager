@@ -1,15 +1,14 @@
 package top.wdcc.asterisk.ami;
 
 import org.apache.commons.lang3.StringUtils;
-import top.wdcc.asterisk.ami.AmiMessage;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Ami Message Implement
+ * ami message implementation
  *
- * @author Wavin
+ * @author wavin
  */
 public class AmiMessageImpl implements AmiMessage {
     private Type type;

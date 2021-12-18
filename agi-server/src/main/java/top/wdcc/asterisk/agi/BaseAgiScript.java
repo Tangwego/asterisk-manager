@@ -1,5 +1,9 @@
 package top.wdcc.asterisk.agi;
 
+/**
+ * the script interface for agi call
+ * @author wavin
+ */
 public interface BaseAgiScript {
 
     /**

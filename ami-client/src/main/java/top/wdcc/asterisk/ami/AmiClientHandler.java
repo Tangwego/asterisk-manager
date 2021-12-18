@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * 客户端处理Channel收到数据
+ * real client handler for netty channel
  *
- * @author Wavin
+ * @author wavin
  */
 public class AmiClientHandler extends AbstractAmiHandler {
     private static final Logger logger = LoggerFactory.getLogger(AmiClientHandler.class);

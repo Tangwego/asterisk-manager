@@ -1,7 +1,11 @@
 package top.wdcc.asterisk.ami.apps;
 
 /**
- * playback app
+ * @see <a
+ * href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+Dialplan+Applications">
+ * https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+Dialplan+Applications
+ * </a>
+ * @author wavin
  */
 public class Playback extends AbstractApplication {
 

@@ -4,7 +4,11 @@ import org.apache.commons.lang3.StringUtils;
 import top.wdcc.asterisk.ami.Tech;
 
 /**
- * dial app
+ * @see <a
+ * href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+Dialplan+Applications">
+ * https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+Dialplan+Applications
+ * </a>
+ * @author wavin
  */
 public class Dial extends AbstractApplication {
     private static final String APPLICATION_NAME = "Dial";

@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Ami Message Interface
  *
- * @author Wavin
+ * @author wavin
  */
 public interface AmiMessage {
 

@@ -4,13 +4,16 @@ import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import top.wdcc.asterisk.agi.commands.*;
 import top.wdcc.asterisk.ami.apps.Application;
-import top.wdcc.asterisk.ami.apps.Hangup;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ * an agi connection from asterisk.
+ * use this class to control the agi channel and use all agi commands.
+ * @author wavin
+ */
 public class AgiChannel {
     private AgiMessage message;
 
