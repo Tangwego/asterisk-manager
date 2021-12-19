@@ -9,11 +9,11 @@ package top.wdcc.asterisk.ami.actions;
  */
 public class AgentLogoffAction extends AmiAction {
 
-    private static final String ACTION = "agentlogoff";
+    private static final String ACTION = "AgentLogoff";
 
     public AgentLogoffAction(String agent, boolean soft) {
         super(ACTION);
-        addParams("agent", agent);
-        addParams("soft", String.valueOf(soft));
+        addParams("Agent", agent);
+        addParams("Soft", String.valueOf(soft));
     }
 }

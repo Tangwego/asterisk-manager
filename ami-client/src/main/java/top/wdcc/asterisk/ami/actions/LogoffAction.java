@@ -8,7 +8,7 @@ package top.wdcc.asterisk.ami.actions;
  * @author wavin
  */
 public class LogoffAction extends AmiAction {
-    private static final String ACTION = "logoff";
+    private static final String ACTION = "Logoff";
     public LogoffAction() {
         super(ACTION);
     }

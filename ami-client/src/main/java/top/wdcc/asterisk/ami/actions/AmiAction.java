@@ -9,18 +9,17 @@ import java.util.Map;
 /**
  * abstract ami action
  *
- * @author Wavin
+ * @author wavin
  */
 public abstract class AmiAction {
 
-    // AMI action 请求
-    private static final String AMI_ACTION = "action";
+    private static final String AMI_ACTION = "Action";
 
-    private static final String AMI_ACTIONID = "actionid";
+    private static final String AMI_ACTIONID = "ActionId";
 
-    private static final String AMI_EVENTS = "events";
+    private static final String AMI_EVENTS = "Events";
 
-    private Map<String, String> params;
+    private final Map<String, String> params;
 
     public AmiAction(String name){
         this(name, UuidUtils.getUuid());
@@ -60,7 +59,7 @@ public abstract class AmiAction {
             sb.append(s);
             sb.append(",");
         }
-        if (value != null && value.length > 0) {
+        if (value.length > 0) {
             for (String v: value) {
                 if (StringUtils.isNotEmpty(v)) {
                     sb.append(v);

@@ -8,7 +8,8 @@ public interface BaseAgiScript {
 
     /**
      * handle agi channel
-     * @param channel
+     *
+     * @param channel agi channel
      */
     void service(AgiChannel channel);
 }

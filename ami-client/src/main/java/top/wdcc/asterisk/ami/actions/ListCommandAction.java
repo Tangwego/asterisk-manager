@@ -8,7 +8,7 @@ package top.wdcc.asterisk.ami.actions;
  * @author wavin
  */
 public class ListCommandAction extends AmiAction {
-    private static final String ACTION = "listcommands";
+    private static final String ACTION = "ListCommands";
     public ListCommandAction() {
         super(ACTION);
     }

@@ -8,7 +8,7 @@ package top.wdcc.asterisk.ami.actions;
  * @author wavin
  */
 public class AgentsAction extends AmiAction {
-    private static final String ACTION = "agents";
+    private static final String ACTION = "Agents";
 
     public AgentsAction() {
         super(ACTION);

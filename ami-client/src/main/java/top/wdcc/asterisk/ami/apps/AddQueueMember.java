@@ -1,5 +1,7 @@
 package top.wdcc.asterisk.ami.apps;
 
+import top.wdcc.asterisk.ami.Tech;
+
 /**
  * @see <a
  * href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+Dialplan+Applications">
@@ -10,8 +12,8 @@ package top.wdcc.asterisk.ami.apps;
 public class AddQueueMember extends AbstractApplication {
     private static final String APPLICATION_NAME = "AddQueueMember";
 
-    public AddQueueMember(String queueName, String interfaceName, String penalty, String options, String memberName, String stateInterfaceName) {
+    public AddQueueMember(String queueName, Tech interfaceType, String penalty, String options, String memberName, String stateInterfaceName) {
         super(APPLICATION_NAME);
-        addOptions(queueName, interfaceName, penalty, options, memberName, stateInterfaceName);
+        addOptions(queueName, interfaceType.name(), penalty, options, memberName, stateInterfaceName);
     }
 }

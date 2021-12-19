@@ -9,8 +9,8 @@ package top.wdcc.asterisk.agi.commands;
 public class SetVariableCommand extends AbstractSetCommand {
     private static final String TYPE = "VARIABLE";
 
-    public SetVariableCommand(String key, String value) {
+    public SetVariableCommand(String key, Object value) {
         super(TYPE);
-        addArgument(key, value);
+        addArgument(key, String.valueOf(value));
     }
 }

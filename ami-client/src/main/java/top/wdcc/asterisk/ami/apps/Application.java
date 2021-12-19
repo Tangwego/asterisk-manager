@@ -7,13 +7,13 @@ package top.wdcc.asterisk.ami.apps;
 public interface Application {
     /**
      * get application name
-     * @return
+     * @return application name
      */
     String getName();
 
     /**
      * get application data
-     * @return
+     * @return application data
      */
     String getData();
 }

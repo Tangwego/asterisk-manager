@@ -8,7 +8,7 @@ package top.wdcc.asterisk.ami.actions;
  * @author wavin
  */
 public class PingAction extends AmiAction {
-    private static final String ACTION = "ping";
+    private static final String ACTION = "Ping";
     public PingAction() {
         super(ACTION);
     }

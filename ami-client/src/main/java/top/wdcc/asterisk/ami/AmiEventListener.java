@@ -7,14 +7,14 @@ package top.wdcc.asterisk.ami;
  */
 public interface AmiEventListener {
     /**
-     * 登录动作触发回调
-     * @param success
+     * on ami client login result
+     * @param success login result
      */
     void onLogin(boolean success);
 
     /**
-     * 收到事件回调
-     * @param event
+     * on ami event received
+     * @param event ami event
      */
     void onEvent(AmiEvent event);
 }

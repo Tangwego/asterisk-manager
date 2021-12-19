@@ -8,11 +8,11 @@ package top.wdcc.asterisk.ami.actions;
  * @author wavin
  */
 public class AbsoluteTimeoutAction extends AmiAction {
-    private static final String ACTION = "absolutetimeout";
+    private static final String ACTION = "AbsoluteTimeout";
 
     public AbsoluteTimeoutAction(String channel, long timeout) {
         super(ACTION);
-        addParams("channel", channel);
-        addParams("timeout", String.valueOf(timeout));
+        addParams("Channel", channel);
+        addParams("Timeout", String.valueOf(timeout));
     }
 }

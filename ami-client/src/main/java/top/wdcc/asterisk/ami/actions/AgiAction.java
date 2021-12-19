@@ -8,12 +8,12 @@ package top.wdcc.asterisk.ami.actions;
  * @author wavin
  */
 public class AgiAction extends AmiAction {
-    private static final String ACTION = "agi";
+    private static final String ACTION = "Agi";
 
     public AgiAction(String channel, String command) {
         super(ACTION);
-        addParams("channel", channel);
-        addParams("command", command);
-        addParams("commandid", getId());
+        addParams("Channel", channel);
+        addParams("Command", command);
+        addParams("CommandId", getId());
     }
 }

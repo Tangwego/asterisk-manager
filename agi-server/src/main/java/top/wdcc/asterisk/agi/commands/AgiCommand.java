@@ -6,5 +6,9 @@ package top.wdcc.asterisk.agi.commands;
  */
 public interface AgiCommand {
 
+    /**
+     * get command string
+     * @return command string
+     */
     String getCommandString();
 }

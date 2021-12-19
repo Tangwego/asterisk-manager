@@ -12,35 +12,32 @@ import top.wdcc.asterisk.common.utils.UuidUtils;
  * @author wavin
  */
 public class OriginateAction extends AmiAction {
-    private static final String ACTION = "originate";
+    private static final String ACTION = "Originate";
 
-    public static final String DEFAULT_CALLERID = "asterisk";
-    public static final String DEFAULT_CONTEXT = "default";
-    public static final int DEFAULT_PRIORITY = 1;
-    public static final int DEFAULT_TIMEOUT = 30000;
-    public static final boolean DEFAULT_ASYNC = true;
-    public static final String DEFAULT_VARIABLE = "SIPADDHEADER=Call-Info:\\; answer-after=0";
-
-    public static final String CHANNEL = "channel";
-    public static final String EXTEN = "exten";
-    public static final String CONTEXT = "context";
-    public static final String PRIORITY = "priority";
-    public static final String APPLICATION = "application";
-    public static final String DATA = "data";
-    public static final String TIMEOUT = "timeout";
-    public static final String CALLER_ID = "callerid";
-    public static final String VARIABLE = "variable";
-    public static final String ACCOUNT = "account";
-    public static final String EARLYMEDIA = "earlymedia";
-    public static final String ASYNC = "async";
-    public static final String CODECS = "codecs";
+    private static final String CHANNEL = "Channel";
+    private static final String EXTEN = "Exten";
+    private static final String CONTEXT = "Context";
+    private static final String PRIORITY = "Priority";
+    private static final String APPLICATION = "Application";
+    private static final String DATA = "Data";
+    private static final String TIMEOUT = "Timeout";
+    private static final String CALLER_ID = "CallerId";
+    private static final String VARIABLE = "Variable";
+    private static final String ACCOUNT = "Account";
+    private static final String EARLYMEDIA = "EarlyMedia";
+    private static final String ASYNC = "Async";
+    private static final String CODECS = "Codecs";
 
     public OriginateAction(String callee){
-        this(callee, DEFAULT_CONTEXT, DEFAULT_PRIORITY);
+        this(callee, ActionDefaultValue.DEFAULT_CONTEXT, ActionDefaultValue.DEFAULT_PRIORITY);
     }
 
     public OriginateAction(String callee, String context, int priority) {
-        this("SIP/" + callee, callee, context, priority, null, DEFAULT_TIMEOUT, DEFAULT_CALLERID, DEFAULT_VARIABLE,null,null,DEFAULT_ASYNC,null);
+        this("SIP/" + callee, callee, context, priority, null,
+                ActionDefaultValue.DEFAULT_TIMEOUT,
+                ActionDefaultValue.DEFAULT_CALLERID,
+                ActionDefaultValue.DEFAULT_VARIABLE,null,null,
+                ActionDefaultValue.DEFAULT_ASYNC,null);
     }
 
     public OriginateAction(String channel, String exten, String context, int priority, Application app, long timeout, String callerId, String variable, String account, String earlyMedia, boolean async, String codecs) {
@@ -75,7 +72,9 @@ public class OriginateAction extends AmiAction {
     }
 
     public OriginateAction application(Application app){
-        if (app == null) return this;
+        if (app == null) {
+            return this;
+        }
         addParams(APPLICATION, app.getName());
         addParams(DATA, app.getData());
         return this;

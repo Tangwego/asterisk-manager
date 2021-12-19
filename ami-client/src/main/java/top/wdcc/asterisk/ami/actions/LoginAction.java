@@ -8,10 +8,10 @@ package top.wdcc.asterisk.ami.actions;
  * @author wavin
  */
 public class LoginAction extends AmiAction {
-    private static final String ACTION = "login";
+    private static final String ACTION = "Login";
     public LoginAction(String username, String secret) {
         super(ACTION);
-        addParams("username", username);
-        addParams("secret", secret);
+        addParams("Username", username);
+        addParams("Secret", secret);
     }
 }

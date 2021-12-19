@@ -11,12 +11,29 @@ import java.util.Map;
  */
 public interface AmiMessage {
 
-    /** AMI 消息类型  **/
+    /**
+     * AMI message type
+     */
     enum Type {
+        /**
+         * type action
+         */
         ACTION,
+        /**
+         * type response
+         */
         RESPONSE,
+        /**
+         * type event
+         */
         EVENT,
+        /**
+         * type auth request
+         */
         AUTH_REQUEST,
+        /**
+         * unknow type
+         */
         UNKNOW;
         public static Type from(String value){
             for (Type type: values()) {
@@ -28,30 +45,49 @@ public interface AmiMessage {
         }
     }
 
-    /** 认证 **/
+    /** Auth Request **/
     String AMI_AUTH_REQUEST = "Asterisk Call Manager/1.3";
 
-    /** AMI 响应 **/
+    /** AMI response **/
     String AMI_RESPONSE = "Response";
 
-    /** AMI 事件 **/
+    /** AMI event **/
     String AMI_EVENT = "Event";
 
-    /** 获取消息类型 **/
+    /**
+     * get message type
+     * @return type message type
+     */
     Type getType();
 
-    /** 获取消息参数字段 **/
+    /**
+     * get message's field
+     * @param field field name
+     * @return field value
+     */
     String getParam(String field);
 
-    /** 获取消息所有参数 **/
+    /**
+     *  get all message fields
+     * @return params
+     */
     Map<String, String> getParams();
 
-    /** 是否执行成功(如果是发送Action) **/
+    /**
+     * is execute success? (received after send action)
+     * @return true or false
+     */
     boolean isSuccess();
 
-    /** 获取响应消息 **/
+    /**
+     * get response text
+     * @return response text
+     */
     String getResponseText();
 
-    /** 获取Message **/
+    /**
+     * get message
+     * @return text message
+     */
     String getMessage();
 }

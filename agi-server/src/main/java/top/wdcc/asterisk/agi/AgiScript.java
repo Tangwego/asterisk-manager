@@ -12,13 +12,13 @@ import java.lang.annotation.*;
 public @interface AgiScript {
     /**
      * defined script name
-     * @return
+     * @return name
      */
     String name() default "";
 
     /**
      * defined script order
-     * @return
+     * @return order
      */
     int order() default 0;
 }
