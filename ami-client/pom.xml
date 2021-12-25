@@ -19,6 +19,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>top.wdcc.asterisk</groupId>
             <artifactId>asterisk-manager-common</artifactId>

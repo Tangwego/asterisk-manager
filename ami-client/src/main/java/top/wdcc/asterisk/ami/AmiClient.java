@@ -28,15 +28,18 @@ public class AmiClient implements AmiEventListener {
     private AtomicBoolean authenticated = new AtomicBoolean(false);
     private AmiEventListener listener;
     private AmiConfig config;
-    private static final ThreadPoolExecutor pingThread = new ThreadPoolExecutor(1, 1,
-            0L, TimeUnit.MILLISECONDS,
-            new LinkedBlockingQueue<Runnable>(), r -> new Thread(r, "Ami-Ping-Thread"));
+    public static final EventLoopGroup ping = new NioEventLoopGroup(1, r -> {
+        return new Thread(r, "ami-ping");
+    });
+
+    private AmiPingThread amiPingThread;
 
     public AmiClient(String host, int port) {
         this.config = new AmiConfig();
         this.config.setHost(host);
         this.config.setPort(port);
         this.config.setTimeout(30);
+        this.amiPingThread = new AmiPingThread(this, 30000);
     }
 
     public AmiClient(AmiConfig config){
@@ -50,7 +53,7 @@ public class AmiClient implements AmiEventListener {
         if (config.getPort() <= 0 || config.getPort() >= 65535) {
             this.config.setPort(5038);
         }
-
+        this.amiPingThread = new AmiPingThread(this, 30000);
     }
 
     public void setEventListener(AmiEventListener listener) {
@@ -127,7 +130,7 @@ public class AmiClient implements AmiEventListener {
     public void onLogin(boolean success) {
         logger.info("authenticated result: [{}]", success);
         if (success) {
-            pingThread.submit(new AmiPingThread(this, 3000));
+            ping.submit(this.amiPingThread);
         }
         authenticated.set(true);
         this.isLogin = success;
@@ -145,9 +148,12 @@ public class AmiClient implements AmiEventListener {
     }
 
     public void close(){
-        if(this.isActive()){
+        this.amiPingThread.stop();
+
+        if(this.isActive()) {
             sendAction(new LogoffAction());
         }
+        ping.shutdownGracefully();
         group.shutdownGracefully();
     }
 
