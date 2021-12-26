@@ -2,6 +2,7 @@ package top.wdcc.asterisk.ami;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -90,4 +91,16 @@ public interface AmiMessage {
      * @return text message
      */
     String getMessage();
+
+    /**
+     * add ami body lines
+     * @param line
+     */
+    void addBody(String line);
+
+    /**
+     * get ami message body lines
+     * @return
+     */
+    List<String> getBody();
 }

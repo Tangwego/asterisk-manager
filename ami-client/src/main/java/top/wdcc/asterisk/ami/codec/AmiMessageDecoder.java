@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class AmiMessageDecoder extends ReplayingDecoder<AmiMessageDecoder.State> {
 
-    private static final String SPLITOR = ":";
+    private static final String SPLITOR = ": ";
 
     enum State {
         START
@@ -40,21 +40,16 @@ public class AmiMessageDecoder extends ReplayingDecoder<AmiMessageDecoder.State>
                 }
 
                 if (StringUtils.equalsIgnoreCase(header, AmiMessage.AMI_AUTH_REQUEST)) {
-                    // 认证请求消息
+                    // 认证请求
                     message.setType(AmiMessage.Type.AUTH_REQUEST);
-                    if (this.message != null) {
-                        list.add(message);
-                    }
-                    this.message = null;
-                } else {
-                    // 非认证消息
+                } else if(StringUtils.startsWithIgnoreCase(header, AmiMessage.AMI_EVENT)){
+                    // 事件
+                    message.setType(AmiMessage.Type.EVENT);
                     if (header.indexOf(SPLITOR) > -1) {
                         String field = header.substring(0, header.indexOf(SPLITOR));
                         String value = header.substring(header.indexOf(SPLITOR) + 2);
                         message.addParams(field, value);
-                        updateType(message,field);
                     }
-
                     boolean readDoubleCRLF = false;
                     while (!readDoubleCRLF) {
                         String line = readLine(byteBuf);
@@ -63,18 +58,37 @@ public class AmiMessageDecoder extends ReplayingDecoder<AmiMessageDecoder.State>
                                 String field = line.substring(0, line.indexOf(SPLITOR));
                                 String value = line.substring(line.indexOf(SPLITOR) + 2);
                                 message.addParams(field, value);
-                                updateType(message,field);
                             }
                         } else {
                             readDoubleCRLF = true;
                         }
                     }
-
-                    if (this.message != null) {
-                        list.add(message);
+                } else {
+                    // 响应消息
+                    message.setType(AmiMessage.Type.RESPONSE);
+                    if (header.indexOf(SPLITOR) > -1) {
+                        String field = header.substring(0, header.indexOf(SPLITOR));
+                        String value = header.substring(header.indexOf(SPLITOR) + 2);
+                        message.addParams(field, value);
+                    } else {
+                        message.setSuccess(true);
+                        message.addBody(header);
                     }
-                    this.message = null;
+                    boolean readDoubleCRLF = false;
+                    while (!readDoubleCRLF) {
+                        String line = readLine(byteBuf);
+                        if (StringUtils.isNotEmpty(line)) {
+                            message.addBody(line);
+                        } else {
+                            readDoubleCRLF = true;
+                        }
+                    }
                 }
+
+                if (this.message != null) {
+                    list.add(message);
+                }
+                this.message = null;
 
                 break;
             default:

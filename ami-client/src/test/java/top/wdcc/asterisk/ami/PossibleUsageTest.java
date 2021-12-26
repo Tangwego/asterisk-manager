@@ -9,7 +9,7 @@ public class PossibleUsageTest {
         amiClient.setEventListener(new AmiEventListener() {
             @Override
             public void onLogin(boolean success) {
-                // TODO login
+                // TODO login success
             }
 
             @Override

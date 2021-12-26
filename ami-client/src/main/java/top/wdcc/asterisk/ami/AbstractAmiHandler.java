@@ -29,17 +29,24 @@ public abstract class AbstractAmiHandler extends SimpleChannelInboundHandler<Ami
     private Queue<CompletableFuture<AmiMessage>> commandQueue = new LinkedBlockingQueue<>();
     private static final Lock syncLock = new ReentrantLock();
 
-    public static final EventLoopGroup executor = new NioEventLoopGroup(new ThreadFactory() {
-        private final AtomicInteger integer = new AtomicInteger();
-        @Override
-        public Thread newThread(Runnable r) {
-            return new Thread(r, "ami-" + integer.incrementAndGet());
-        }
-    });
+    private static final EventLoopGroup executor =
+            new NioEventLoopGroup(new ThreadFactory() {
+                private final AtomicInteger integer = new AtomicInteger();
+                @Override
+                public Thread newThread(Runnable r) {
+                    return new Thread(r, "ami-" + integer.incrementAndGet());
+                }
+            });
 
-    public static final EventLoopGroup eventPool = new NioEventLoopGroup(1, r -> {
-        return new Thread(r, "ami-event");
-    });
+    private static final EventLoopGroup eventPool =
+            new NioEventLoopGroup(1, r -> {
+                return new Thread(r, "ami-event");
+            });
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+
+    }
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, AmiMessage message) throws Exception {

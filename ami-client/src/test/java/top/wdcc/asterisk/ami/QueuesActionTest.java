@@ -1,11 +1,12 @@
 package top.wdcc.asterisk.ami;
 
-import top.wdcc.asterisk.ami.actions.AmiAction;
-import top.wdcc.asterisk.ami.actions.ListCommandAction;
+import top.wdcc.asterisk.ami.actions.QueuesAction;
 
-import java.util.Scanner;
-
-public class CommonUsageTest {
+/**
+ * @author wavin
+ * @date 2021/12/26
+ */
+public class QueuesActionTest {
     public static void main(String[] args) throws InterruptedException {
         AmiConfig amiConfig = new AmiConfig();
         amiConfig.setUsername("asterisk");
@@ -26,13 +27,8 @@ public class CommonUsageTest {
         });
 
         amiClient.login();
-        AmiAction action = new ListCommandAction();
-        AmiMessage amiMessage = amiClient.sendAction(action);
-
-        Scanner scanner = new Scanner(System.in);
-        while(scanner.hasNext()) {
-
-        }
+        AmiMessage amiMessage = amiClient.sendAction(new QueuesAction());
+        System.out.println(amiMessage.toString());
 
         amiClient.close();
     }

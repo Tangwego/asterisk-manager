@@ -15,7 +15,7 @@ public class OriginateActionTest {
         amiClient.setEventListener(new AmiEventListener() {
             @Override
             public void onLogin(boolean success) {
-                // TODO login
+                // TODO login success
                 System.out.println("login success: " + success);
             }
 

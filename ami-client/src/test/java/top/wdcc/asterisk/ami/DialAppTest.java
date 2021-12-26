@@ -1,7 +1,6 @@
 package top.wdcc.asterisk.ami;
 
 import top.wdcc.asterisk.ami.actions.OriginateAction;
-import top.wdcc.asterisk.ami.apps.Agi;
 import top.wdcc.asterisk.ami.apps.Dial;
 
 public class DialAppTest {
@@ -15,7 +14,7 @@ public class DialAppTest {
         amiClient.setEventListener(new AmiEventListener() {
             @Override
             public void onLogin(boolean success) {
-                // TODO login
+                // TODO login success
                 System.out.println("login success: " + success);
             }
 

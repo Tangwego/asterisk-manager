@@ -2,7 +2,9 @@ package top.wdcc.asterisk.ami;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,6 +15,8 @@ import java.util.Map;
 public class AmiMessageImpl implements AmiMessage {
     private Type type;
     private Map<String, String> params;
+    private List<String> body;
+    private boolean success;
 
     public AmiMessageImpl(){
         params = new HashMap<>();
@@ -41,6 +45,11 @@ public class AmiMessageImpl implements AmiMessage {
         return true;
     }
 
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+
     @Override
     public String getResponseText() {
         return params.get(AMI_RESPONSE);
@@ -51,6 +60,19 @@ public class AmiMessageImpl implements AmiMessage {
         return params.get("Message");
     }
 
+    @Override
+    public void addBody(String line) {
+        if (this.body == null) {
+            this.body = new ArrayList<>();
+        }
+        this.body.add(line);
+    }
+
+    @Override
+    public List<String> getBody() {
+        return this.body;
+    }
+
     public void setType(Type type) {
         this.type = type;
     }
@@ -59,11 +81,21 @@ public class AmiMessageImpl implements AmiMessage {
         params.put(field, value);
     }
 
+    //@Override
+    //public String toString() {
+    //    return "AmiMessage[" +
+    //            "type=" + type +
+    //            ", params=has [" + params.size() +
+    //            "] fields]";
+    //}
+
+
     @Override
     public String toString() {
-        return "AmiMessage[" +
+        return "AmiMessageImpl{" +
                 "type=" + type +
-                ", params=has [" + params.size() +
-                "] fields]";
+                ", params=" + params +
+                ", body=" + body +
+                '}';
     }
 }
