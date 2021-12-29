@@ -78,7 +78,13 @@ public class AmiMessageDecoder extends ReplayingDecoder<AmiMessageDecoder.State>
                     while (!readDoubleCRLF) {
                         String line = readLine(byteBuf);
                         if (StringUtils.isNotEmpty(line)) {
-                            message.addBody(line);
+                            if (line.indexOf(SPLITOR) > -1) {
+                                String field = line.substring(0, line.indexOf(SPLITOR));
+                                String value = line.substring(line.indexOf(SPLITOR) + 2);
+                                message.addParams(field, value);
+                            } else {
+                                message.addBody(line);
+                            }
                         } else {
                             readDoubleCRLF = true;
                         }
