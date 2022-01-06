@@ -79,4 +79,19 @@ public class OriginateAction extends AmiAction {
         addParams(DATA, app.getData());
         return this;
     }
+
+    public OriginateAction variable(String ... vars) {
+        appendParams(VARIABLE, vars);
+        return this;
+    }
+
+    public OriginateAction earlyMedia(String earlyMedia) {
+        addParams(EARLYMEDIA, earlyMedia);
+        return this;
+    }
+
+    public OriginateAction codec(String codec) {
+        appendParams(CODECS, codec);
+        return this;
+    }
 }

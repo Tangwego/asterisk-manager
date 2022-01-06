@@ -13,6 +13,8 @@ import java.util.Map;
  */
 public abstract class AmiAction {
 
+    private static final String SPLITOR = ",";
+
     private static final String AMI_ACTION = "Action";
 
     private static final String AMI_ACTIONID = "ActionId";
@@ -57,13 +59,13 @@ public abstract class AmiAction {
         StringBuilder sb = new StringBuilder();
         if (StringUtils.isNotEmpty(s)) {
             sb.append(s);
-            sb.append(",");
+            sb.append(SPLITOR);
         }
         if (value.length > 0) {
             for (String v: value) {
                 if (StringUtils.isNotEmpty(v)) {
                     sb.append(v);
-                    sb.append(",");
+                    sb.append(SPLITOR);
                 }
             }
             sb.deleteCharAt(sb.length() - 1);

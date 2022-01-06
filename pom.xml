@@ -7,7 +7,7 @@
     <groupId>top.wdcc.asterisk</groupId>
     <artifactId>asterisk-manager</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>${revision}</version>
     <modules>
         <module>ami-client</module>
         <module>asterisk-manager-common</module>
@@ -27,8 +27,8 @@
         <asterisk.version>11.25.3</asterisk.version>
         <reflections.version>0.9.12</reflections.version>
         <junit.version>4.13.1</junit.version>
-        <revision>1.0.0</revision>
-        <version>1.0.0</version>
+        <revision>1.0.1</revision>
+        <parent.version>1.0.1</parent.version>
     </properties>
 
     <dependencyManagement>
@@ -93,6 +93,7 @@
     </dependencyManagement>
 
     <build>
+        <finalName>${project.artifactId}-${parent.version}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -100,6 +101,11 @@
                 <version>2.7</version>
                 <configuration>
                     <generateBackupPoms>false</generateBackupPoms>
+                    <oldVersion>${revision}</oldVersion>
+                    <newVersion>${parent.version}</newVersion>
+                    <parentVersion>${parent.version}</parentVersion>
+                    <depVersion>${parent.version}</depVersion>
+                    <depVersion>${parent.version}</depVersion>
                 </configuration>
             </plugin>
             <plugin>
