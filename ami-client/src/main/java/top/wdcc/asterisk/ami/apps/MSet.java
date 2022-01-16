@@ -10,16 +10,13 @@ package top.wdcc.asterisk.ami.apps;
 public class MSet extends AbstractApplication {
     private static final String APPLICATION_NAME = "MSet";
 
-    public MSet() {
-        this(null);
-    }
-
-    public MSet(String ... kv) {
+    public MSet(String key, String value) {
         super(APPLICATION_NAME);
-        addOptions(kv);
+        set(key, value);
     }
 
-    public void set(String key, String value) {
+    public MSet set(String key, String value) {
         addOptions(String.format("%s=%s", key, value));
+        return this;
     }
 }

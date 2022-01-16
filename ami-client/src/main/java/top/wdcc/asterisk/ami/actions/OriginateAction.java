@@ -1,6 +1,7 @@
 package top.wdcc.asterisk.ami.actions;
 
 import org.apache.commons.lang3.StringUtils;
+import top.wdcc.asterisk.ami.AmiDefaultValue;
 import top.wdcc.asterisk.ami.apps.Application;
 import top.wdcc.asterisk.common.utils.UuidUtils;
 
@@ -29,15 +30,15 @@ public class OriginateAction extends AmiAction {
     private static final String CODECS = "Codecs";
 
     public OriginateAction(String callee){
-        this(callee, ActionDefaultValue.DEFAULT_CONTEXT, ActionDefaultValue.DEFAULT_PRIORITY);
+        this(callee, AmiDefaultValue.DEFAULT_CONTEXT, AmiDefaultValue.DEFAULT_PRIORITY);
     }
 
     public OriginateAction(String callee, String context, int priority) {
         this("SIP/" + callee, callee, context, priority, null,
-                ActionDefaultValue.DEFAULT_TIMEOUT,
-                ActionDefaultValue.DEFAULT_CALLERID,
-                ActionDefaultValue.DEFAULT_VARIABLE,null,null,
-                ActionDefaultValue.DEFAULT_ASYNC,null);
+                AmiDefaultValue.DEFAULT_TIMEOUT,
+                AmiDefaultValue.DEFAULT_CALLERID,
+                AmiDefaultValue.DEFAULT_VARIABLE,null,null,
+                AmiDefaultValue.DEFAULT_ASYNC,null);
     }
 
     public OriginateAction(String channel, String exten, String context, int priority, Application app, long timeout, String callerId, String variable, String account, String earlyMedia, boolean async, String codecs) {

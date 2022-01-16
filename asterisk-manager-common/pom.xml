@@ -6,7 +6,7 @@
         <relativePath>../pom.xml</relativePath>
         <artifactId>asterisk-manager</artifactId>
         <groupId>top.wdcc.asterisk</groupId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

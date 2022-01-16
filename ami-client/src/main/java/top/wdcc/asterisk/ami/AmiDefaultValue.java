@@ -1,10 +1,13 @@
-package top.wdcc.asterisk.ami.actions;
+package top.wdcc.asterisk.ami;
 
 /**
- * default values for ami action
+ * @see <a
+ * href="https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+Application_MusicOnHold">
+ * https://wiki.asterisk.org/wiki/display/AST/Asterisk+11+Application_MusicOnHold
+ * </a>
  * @author wavin
  */
-public class ActionDefaultValue {
+public class AmiDefaultValue {
 
     /**
      * originate default values
@@ -20,4 +23,5 @@ public class ActionDefaultValue {
     public static final String DEFAULT_RECORD_FORMAT = "wav";
 
     public static final int DEFAULT_CAUSE = 486;
+    public static final long DEFAULT_DURATION = 30000L;
 }
