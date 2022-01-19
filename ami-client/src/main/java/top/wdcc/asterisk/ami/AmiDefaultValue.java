@@ -24,4 +24,6 @@ public class AmiDefaultValue {
 
     public static final int DEFAULT_CAUSE = 486;
     public static final long DEFAULT_DURATION = 30000L;
+
+    public static final String DEFAULT_DELIMITER = ",";
 }

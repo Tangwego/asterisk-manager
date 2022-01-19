@@ -10,8 +10,10 @@ package top.wdcc.asterisk.ami.apps;
 public class Exec extends AbstractApplication {
     private static final String APPLICATION_NAME = "Exec";
 
-    public Exec(String conf) {
+    public Exec(Application application) {
         super(APPLICATION_NAME);
-        addOptions(conf);
+        addOptions(String.format("%s(%s)",
+                application.getName(),application.getData()));
     }
+
 }

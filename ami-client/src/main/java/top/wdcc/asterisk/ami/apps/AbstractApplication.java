@@ -1,6 +1,7 @@
 package top.wdcc.asterisk.ami.apps;
 
 import org.apache.commons.lang3.StringUtils;
+import top.wdcc.asterisk.ami.AmiDefaultValue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,9 +13,9 @@ import java.util.List;
  */
 public abstract class AbstractApplication implements Application {
 
-    private List<String> options;
+    private String delimiter;
 
-    private static final String OPTIONS_SPLITOR = ",";
+    protected List<String> options;
 
     private String app;
 
@@ -25,6 +26,14 @@ public abstract class AbstractApplication implements Application {
     @Override
     public String getName() {
         return this.app;
+    }
+
+    protected void setDelimiter(String delimiter) {
+        this.delimiter = delimiter;
+    }
+
+    protected String getDelimiter(){
+        return StringUtils.defaultString(this.delimiter, AmiDefaultValue.DEFAULT_DELIMITER);
     }
 
     protected void addOptions(String ... options) {
@@ -51,10 +60,12 @@ public abstract class AbstractApplication implements Application {
         for (String d: this.options) {
             if (StringUtils.isNotEmpty(d)) {
                 sb.append(d);
-                sb.append(OPTIONS_SPLITOR);
+                sb.append(getDelimiter());
             }
         }
-        sb.deleteCharAt(sb.length() - 1);
+        if (StringUtils.isNotEmpty(getDelimiter())) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
         return sb.toString();
     }
 }
